@@ -1,0 +1,37 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Serve as global custom.scss.
+.center{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.movsic-title{
+  color: #FF5E24;
+}
+.movsic-tag{
+  //button for movie/tv filter
+  background-color: #353535;
+  color: #BABABA;
+  font-size: 0.8em;
+  height: 30px;
+  border-radius: 12px;
+}
+
+.movie-card{
+  img{
+    width: 120px;
+    height: 120px;
+  }
+  .movie-card-info{
+    height: 60px;
+    line-height: 1;
+    p{
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+  }
+}
