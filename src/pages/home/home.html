@@ -1,7 +1,8 @@
 <ion-header>
   <ion-navbar class="home-navbar">
     <ion-title class = "home-title">movsic</ion-title>
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-searchbar (ionInput)="getItems($event)" [showCancelButton]="shouldShowCancel" animated="true">
+	</ion-searchbar>
   </ion-navbar>
 
 </ion-header>
@@ -9,17 +10,11 @@
 <ion-content padding>
 
 <div>
-
-  <soundtrack-recommend></soundtrack-recommend>
-  <!-- components/soundtrack-recommend/soundtrack-recommend.html -->
-
+	<soundtrack-recommend></soundtrack-recommend>
+	<!-- components/soundtrack-recommend/soundtrack-recommend.html -->
 </div>
-
-
 <div>
-
-  <artist-recommend></artist-recommend>
-  <!-- components/artist-recommend/artist-recommend.html -->
-
+	<artist-recommend></artist-recommend>
+	<!-- components/artist-recommend/artist-recommend.html -->
 </div>
 </ion-content>
