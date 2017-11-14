@@ -1,0 +1,29 @@
+<ion-content padding class="mgt60">
+
+  <h3 class="center">movsic</h3>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding>
+    <button ion-button color="primary" block>SIGN UP</button>
+    <span>Already a member? <a [navPush]="loginPage">Log in</a></span>
+  </div>
+
+</ion-content>
