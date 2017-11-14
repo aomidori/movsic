@@ -4,15 +4,22 @@
 // App Global Sass
 // --------------------------------------------------
 // Serve as global custom.scss.
-
-.mgt60{ margin-top: 60px; }
+.mgt10{ margin-top: 10px; }
 .mgt20{ margin-top: 20px; }
+.mgt30{ margin-top: 30px; }
+.mgt40{ margin-top: 40px; }
+.mgt60{ margin-top: 60px; }
 
 
 .center{
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+.circle{
+  -moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
 }
 .movsic-title{
   color: #FF5E24;
