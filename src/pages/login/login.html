@@ -1,7 +1,7 @@
 <ion-content padding class="mgt60">
 
   <h3 class="center">movsic</h3>
-
+  <ion-card-content>
   <ion-list>
 
     <ion-item>
@@ -13,12 +13,15 @@
       <ion-label floating>Password</ion-label>
       <ion-input type="password"></ion-input>
     </ion-item>
-
+	
   </ion-list>
 
   <div padding>
+    <button ion-button block color="facebook">
+		<ion-icon name="logo-facebook"></ion-icon> Login with Facebook
+	</button>
     <button ion-button color="primary" block (click)="login();">LOG IN</button>
     <span>Not a member yet? <a [navPush]="signupPage">Sign up!</a></span>
   </div>
-
+  </ion-card-content>
 </ion-content>
