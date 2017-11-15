@@ -2,12 +2,15 @@ import { NgModule, ErrorHandler, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule} from '@angular/common';
 import { HttpModule } from '@angular/http';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { IonicStorageModule } from '@ionic/storage';
+//import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 
 
@@ -26,6 +29,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { SpotifyServiceProvider } from '../providers/spotify-service/spotify-service';
+import { FirebaseProvider } from '../providers/firebase/firebase';
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBlicRsKMEVzeLmTx1EHzoPMAHuR8ZZbQc",
+    authDomain: "movsic-kth2017.firebaseapp.com",
+    databaseURL: "https://movsic-kth2017.firebaseio.com",
+    projectId: "movsic-kth2017",
+    storageBucket: "movsic-kth2017.appspot.com",
+    messagingSenderId: "781103385356"
+}
 
 @NgModule({
   declarations: [
@@ -40,7 +53,9 @@ import { SpotifyServiceProvider } from '../providers/spotify-service/spotify-ser
     BrowserModule, HttpModule,
     ComponentsModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    //IonicStorageModule.forRoot(),
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -56,7 +71,8 @@ import { SpotifyServiceProvider } from '../providers/spotify-service/spotify-ser
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
-    SpotifyServiceProvider
+    SpotifyServiceProvider,
+    FirebaseProvider
   ]
 })
 export class AppModule {}
