@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar class="home-navbar">
     <ion-title class = "home-title">movsic</ion-title>
-    <ion-searchbar (ionInput)="getItems($event)" [showCancelButton]="shouldShowCancel" animated="true">
+    <ion-searchbar [(ngModel)]="searchStr" (keyup)="searchMusic()" [showCancelButton]="shouldShowCancel" animated="true">
 	</ion-searchbar>
   </ion-navbar>
 

@@ -1,6 +1,11 @@
 import { NgModule, ErrorHandler, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule} from '@angular/common';
+import { HttpModule } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
+
+
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
@@ -19,6 +24,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { SpotifyServiceProvider } from '../providers/spotify-service/spotify-service';
 
 @NgModule({
   declarations: [
@@ -30,7 +36,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     TabsPage
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, HttpModule,
     ComponentsModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
@@ -48,7 +54,8 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider
+    AuthServiceProvider,
+    SpotifyServiceProvider
   ]
 })
 export class AppModule {}
