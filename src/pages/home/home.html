@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar class="home-navbar">
-    <ion-title class = "home-title">movsic</ion-title>
+    <ion-title class = "home-title">movsic<a><ion-icon class="ion-icon-right" name="musical-notes" ></ion-icon></a></ion-title>
     <ion-searchbar [(ngModel)]="searchStr" (keyup)="searchMusic()" [showCancelButton]="shouldShowCancel" animated="true">
 	</ion-searchbar>
   </ion-navbar>
@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content padding>
+
 
 <div>
 	<soundtrack-recommend></soundtrack-recommend>
