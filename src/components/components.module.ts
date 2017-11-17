@@ -7,6 +7,8 @@ import { SavedArtistsComponent } from './saved-artists/saved-artists';
 import { SavedMoviesComponent } from './saved-movies/saved-movies';
 import { UserCardComponent } from './user-card/user-card';
 import { CommonInterestComponent } from './common-interest/common-interest';
+import { ExploreCardsComponent } from './explore-cards/explore-cards';
+import { MessagesComponent } from './messages/messages';
 
 @NgModule({
 	declarations: [
@@ -16,7 +18,9 @@ import { CommonInterestComponent } from './common-interest/common-interest';
     SavedArtistsComponent,
     SavedMoviesComponent,
     UserCardComponent,
-    CommonInterestComponent
+    CommonInterestComponent,
+    ExploreCardsComponent,
+    MessagesComponent
 	],
 	imports: [
     IonicModule.forRoot(ArtistRecommendComponent),
@@ -29,7 +33,9 @@ import { CommonInterestComponent } from './common-interest/common-interest';
     SavedArtistsComponent,
     SavedMoviesComponent,
     UserCardComponent,
-    CommonInterestComponent
+    CommonInterestComponent,
+    ExploreCardsComponent,
+    MessagesComponent
 	]
 })
 export class ComponentsModule {}
