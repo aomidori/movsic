@@ -20,21 +20,12 @@ export class HomePage {
   searchMusic(){
     this._spotifyService.getToken()
          .subscribe(res => {
-             this._spotifyService.searchMusic(this.searchStr ,'artist' , res.access_token)
+             this._spotifyService.searchMusic(this.searchStr ,'album' , res.access_token)
                .subscribe(res=> {
-                 this.searchRes = res.artists.items;
+                 this.searchRes = res.albums.items;
             })
          })
          console.log(this.searchRes);
-
-  /*  console.log(this.searchStr);
-    this.token = this._spotifyService.getToken();
-    console.log(this.token);
-    console.log(this.searchStr);
-    this._spotifyService.searchMusic(this.searchStr,this.token)
-            .subscribe(res => {
-                this.searchRes = res.artists.items;
-    })*/
   }
 
 }

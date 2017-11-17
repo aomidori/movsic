@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SpotifyServiceProvider } from '../../providers/spotify-service/spotify-service';
 
 /**
- * Generated class for the MoviePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * 
  */
 
 @IonicPage()
@@ -15,11 +13,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MoviePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  name: string;
+  year: number;
+  soundtrack: Album[];
+  searchRes:string;
+
+
+  constructor(private _spotifyService:SpotifyServiceProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MoviePage');
+  soundtrackDisplay(){
+
+    this._spotifyService.getToken().subscribe(res => {
+            this._spotifyService.getAlbumTracks('5lyNebNgp8ZEhDwC2qOIWr' , res.access_token).subscribe(res=> {
+                       this.searchRes = res.tracks;
+            })
+    })
+    console.log(this.searchRes);
+
   }
+
+
+
+
 
 }
