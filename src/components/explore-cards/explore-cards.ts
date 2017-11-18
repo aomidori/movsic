@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { App, ViewController, NavController } from 'ionic-angular';
+import { MoviePage } from '../../pages/movie/movie';
 
 /**
  * Generated class for the ExploreCardsComponent component.
@@ -11,12 +13,13 @@ import { Component } from '@angular/core';
   templateUrl: 'explore-cards.html'
 })
 export class ExploreCardsComponent {
+  movielink = MoviePage;
 
-  text: string;
+  constructor(public nav: NavController) {
+  }
 
-  constructor() {
-    console.log('Hello ExploreCardsComponent Component');
-    this.text = 'Hello World';
+  public goToMovie(){
+    this.nav.push(MoviePage);
   }
 
 }

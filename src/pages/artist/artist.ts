@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SpotifyServiceProvider } from '../../providers/spotify-service/spotify-service';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
 
-/**
- * Generated class for the ArtistPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Album } from '../../album';
 
 @IonicPage()
 @Component({
@@ -15,11 +14,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ArtistPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  albumIds: any;
+  albumImgUrls: any;
+
+  constructor(private _spotifyService: SpotifyServiceProvider, public http:Http, public nav: NavController) {
+    this.albumIds = [];
+    this.albumImgUrls = [];
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ArtistPage');
+    this._spotifyService.getToken()
+      .subscribe(res => {
+            //get Sakamoto ryuichi's info
+          this._spotifyService.getArtistAlbums('1tcgfoMTT1szjUeaikxRjA' , res.access_token)
+              .subscribe(res=> {
+                   for (let album of res.items){
+                      this.albumIds.push(album.id);
+                      let images = album.images;
+                      this.albumImgUrls.push(images[0].url);
+                    }
+
+          });
+          console.log(this.albumIds);
+          console.log(this.albumImgUrls);
+
+    });  //---end of this._spotifyService.getToken().subscribe
+
+
   }
+
 
 }
