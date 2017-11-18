@@ -1,10 +1,22 @@
 <ion-header>
 	<ion-navbar>
-		<ion-title>movie</ion-title>
+		<ion-title>The Renevant</ion-title>
 	</ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+	<ion-thumbnail class="center" style="width:140px;">
+      <img src="assets/imgs/cover3.png">
+	</ion-thumbnail>
+	<h5>The Revenant</h5>
+	<span style="color:white;"><a (click)="openSakamoto();">Ryuichi Sakamoto</a>, <a>Alva Noto</a>, <a>Bryce Dessner</a></span>
+	<p>Movie where Leonardo won his first Academy Award.</p>
+	<button ion-button>Save</button>
+	<ion-list>
+		<button ion-item *ngFor="let song of tracks" (click)="playsong(song.preview_url)">
+			{{ song.name }}
+		</button>
+	</ion-list>
 
 </ion-content>

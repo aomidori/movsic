@@ -10,6 +10,7 @@ import 'rxjs/Rx';
 
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 //import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 
@@ -24,6 +25,8 @@ import { ExplorePage } from '../pages/explore/explore';
 import { MessagePage } from '../pages/message/message';
 import { MyprofilePage } from '../pages/myprofile/myprofile';
 import { TabsPage } from '../pages/tabs/tabs';
+import { MoviePage } from '../pages/movie/movie';
+import { ArtistPage} from '../pages/artist/artist';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -47,7 +50,8 @@ const firebaseConfig = {
     LoginPage,
     AboutPage,
     HomePage, ExplorePage, MessagePage, MyprofilePage,
-    TabsPage
+    TabsPage,
+    MoviePage, ArtistPage
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -64,7 +68,8 @@ const firebaseConfig = {
     LoginPage,
     AboutPage,
     HomePage, ExplorePage, MessagePage, MyprofilePage,
-    TabsPage
+    TabsPage,
+    MoviePage, ArtistPage
   ],
   providers: [
     StatusBar,
@@ -72,7 +77,8 @@ const firebaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     SpotifyServiceProvider,
-    FirebaseProvider
+    FirebaseProvider,
+    InAppBrowser
   ]
 })
 export class AppModule {}

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { App, ViewController, NavController } from 'ionic-angular';
+import { ArtistPage } from '../../pages/artist/artist';
 
 /**
  * Generated class for the ArtistRecommendComponent component.
@@ -12,11 +14,12 @@ import { Component } from '@angular/core';
 })
 export class ArtistRecommendComponent {
 
-  text: string;
+  artistPage = ArtistPage;
 
-  constructor() {
-    console.log('Hello ArtistRecommendComponent Component');
-    this.text = 'Hello World';
+  constructor(public nav: NavController) {
+  }
+  public goToArtist(){
+    this.nav.push(ArtistPage);
   }
 
 }
