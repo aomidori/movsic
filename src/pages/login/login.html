@@ -17,9 +17,9 @@
   </ion-list>
 
   <div padding>
-    <button ion-button block color="facebook">
-		<ion-icon name="logo-facebook"></ion-icon> Login with Facebook
-	</button>
+    <button ion-button block color="facebook" (click)="loginWithFacebook()">
+		    <ion-icon name="logo-facebook"></ion-icon> Login with Facebook
+	  </button>
     <button ion-button color="primary" block (click)="login(user)">LOG IN</button>
     <span>Not a member yet? <a [navPush]="signupPage">Sign up!</a></span>
   </div>
