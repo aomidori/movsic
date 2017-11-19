@@ -5,6 +5,7 @@ import { LoginPage } from '../login/login';
 import { TabsPage } from '../tabs/tabs';
 
 import { User } from '../../models/user';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'page-signup',
@@ -26,7 +27,8 @@ export class SignupPage {
       if(result){
         this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
         this.afAuth.auth.currentUser.updateProfile({
-          displayName: user.username
+          displayName: user.username,
+          photoURL: 'https://www.gravatar.com/avatar/'+ Md5.hashStr(user.email.toLowerCase())
         });
         this.nav.setRoot(TabsPage);
         this.registerAlert();

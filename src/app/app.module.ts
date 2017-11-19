@@ -37,7 +37,6 @@ import { ArtistPage} from '../pages/artist/artist';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { SpotifyServiceProvider } from '../providers/spotify-service/spotify-service';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 
@@ -74,7 +73,6 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider,
     SpotifyServiceProvider,
     FirebaseProvider,
     InAppBrowser
