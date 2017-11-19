@@ -6,26 +6,24 @@
 
     <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-input type="email" [(ngModel)]="user.email"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Username</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="user.username"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
-	<ion-item>
-      <ion-label floating>Repeat Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
+
   </ion-list>
 
+
   <div padding>
-    <button ion-button color="primary" block>SIGN UP</button>
+    <button ion-button color="primary" block (click) = "register(user)">SIGN UP</button>
     <span>Already a member? <a [navPush]="loginPage">Log in</a></span>
   </div>
 
