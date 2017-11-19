@@ -2,8 +2,11 @@ import { NgModule, ErrorHandler, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule} from '@angular/common';
 import { HttpModule } from '@angular/http';
+
+import { FIREBASE_CONFIG} from './app.firebase.config'
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule} from 'angularfire2/auth';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -16,6 +19,10 @@ import { MyApp } from './app.component';
 
 
 import { ComponentsModule } from '../components/components.module';
+
+/*
+ *   Pages import
+ *               */
 
 import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
@@ -34,15 +41,6 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { SpotifyServiceProvider } from '../providers/spotify-service/spotify-service';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBlicRsKMEVzeLmTx1EHzoPMAHuR8ZZbQc",
-    authDomain: "movsic-kth2017.firebaseapp.com",
-    databaseURL: "https://movsic-kth2017.firebaseio.com",
-    projectId: "movsic-kth2017",
-    storageBucket: "movsic-kth2017.appspot.com",
-    messagingSenderId: "781103385356"
-}
-
 @NgModule({
   declarations: [
     MyApp,
@@ -59,7 +57,8 @@ const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     //IonicStorageModule.forRoot(),
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

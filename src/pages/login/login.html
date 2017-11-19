@@ -6,21 +6,21 @@
 
     <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-input type="email" [(ngModel)]="user.email"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
-	
+
   </ion-list>
 
   <div padding>
     <button ion-button block color="facebook">
 		<ion-icon name="logo-facebook"></ion-icon> Login with Facebook
 	</button>
-    <button ion-button color="primary" block (click)="login();">LOG IN</button>
+    <button ion-button color="primary" block (click)="login(user)">LOG IN</button>
     <span>Not a member yet? <a [navPush]="signupPage">Sign up!</a></span>
   </div>
   </ion-card-content>

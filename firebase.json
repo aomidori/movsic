@@ -8,17 +8,15 @@
   },
   "hosting": {
     "public": "public",
+    "cleanUrls": true,
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ]
   },
+
   "storage": {
     "rules": "storage.rules"
-  },
-  "rewrites": [ {
-    "source": "**",
-    "destination": "/index.html"
   }
 }
