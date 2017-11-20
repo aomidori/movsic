@@ -5,7 +5,6 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
-import { Album } from '../../album';
 
 @IonicPage()
 @Component({
