@@ -62,10 +62,11 @@ export class SpotifyServiceProvider {
   }
 
   searchMusic(str: string, type='artist', token:string){
+    //console.log("search "+ str);
     let headers = new Headers();
     headers.append('Authorization' , 'Bearer ' + token);
 
-    this.searchUrl = 'https://api.spotify.com/v1/search?query='+str+'&offset=0&limit=20&type='+type+'&market=SE';
+    this.searchUrl = 'https://api.spotify.com/v1/search?query='+str+'&offset=0&limit=10&type='+type+'&market=SE';
     return this._http.get(this.searchUrl, {headers: headers})
         .map((res: Response) => res.json())
   }

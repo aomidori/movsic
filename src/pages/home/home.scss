@@ -1,13 +1,13 @@
 page-home {
-  ion-navbar{
-    height: 120px;
+  ion-title{
+    height: 60px;
+    background-color: $toolbar-background;
   }
   ion-content{
-    margin-top: 10px;
+    margin-top: 160px;
   }
-  ion-searchbar{
-    margin-top: 15px;
-  }
+
+
 }
 .home-navbar{
 
@@ -18,4 +18,7 @@ page-home {
   text-align: center;
   font-style: italic;
   font-size: 1.4em !important;
+}
+.search-drowpdown{
+
 }

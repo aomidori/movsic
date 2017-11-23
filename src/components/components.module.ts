@@ -9,6 +9,7 @@ import { UserCardComponent } from './user-card/user-card';
 import { CommonInterestComponent } from './common-interest/common-interest';
 import { ExploreCardsComponent } from './explore-cards/explore-cards';
 import { MessagesComponent } from './messages/messages';
+import { SearchDropdownComponent } from './search-dropdown/search-dropdown';
 
 @NgModule({
 	declarations: [
@@ -20,7 +21,8 @@ import { MessagesComponent } from './messages/messages';
     UserCardComponent,
     CommonInterestComponent,
     ExploreCardsComponent,
-    MessagesComponent
+    MessagesComponent,
+    SearchDropdownComponent
 	],
 	imports: [
     IonicModule.forRoot(ArtistRecommendComponent),
@@ -35,7 +37,8 @@ import { MessagesComponent } from './messages/messages';
     UserCardComponent,
     CommonInterestComponent,
     ExploreCardsComponent,
-    MessagesComponent
+    MessagesComponent,
+    SearchDropdownComponent
 	]
 })
 export class ComponentsModule {}
