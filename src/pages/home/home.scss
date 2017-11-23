@@ -4,9 +4,10 @@ page-home {
     background-color: $toolbar-background;
   }
   ion-content{
-    margin-top: 160px;
+    position: static;
+    top: 140px;
+    height: 490px;
   }
-
 
 }
 .home-navbar{
@@ -18,7 +19,4 @@ page-home {
   text-align: center;
   font-style: italic;
   font-size: 1.4em !important;
-}
-.search-drowpdown{
-
 }

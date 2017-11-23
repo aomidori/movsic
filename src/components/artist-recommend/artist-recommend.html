@@ -2,37 +2,17 @@
 <h5 class="movsic-title center">Artists for you</h5>
 <ion-grid>
   <ion-row>
-    <ion-col col-4>
+    <ion-col col-4 *ngFor="let artist of recArtists">
       <div class="artist-item">
-        <ion-avatar (click)= "goToArtist()">
-          <img class="circle" height="80" width="80" src="assets/imgs/composors/ryuichi.png"/>
+        <!--TODO: artist pages with id -->
+        <ion-avatar (click)="goToArtist()">
+            <div class="circle artist-avatar"
+            [ngStyle]="{'background-image':'url('+ artist.img_url +')'}">
+            </div>
         </ion-avatar>
-        <p>
-          Ryuichi Sakamoto
-        </p>
+        <p>{{artist.name}}</p>
       </div>
     </ion-col>
-    <ion-col col-4>
-      <div class="artist-item center">
-        <ion-avatar class="center">
-          <img class="circle" height="80" width="80" src="assets/imgs/composors/john.png"/>
-        </ion-avatar>
-        <p>
-          John Williams
-        </p>
-      </div>
-    </ion-col>
-    <ion-col col-4>
-      <div class="artist-item">
-        <ion-avatar>
-          <img class="circle" height="80" width="80" src="assets/imgs/composors/vangelis.png"/>
-        </ion-avatar>
-        <p>
-          Vangelis
-        </p>
-      </div>
-    </ion-col>
-
 
   </ion-row>
 </ion-grid>
