@@ -1,4 +1,15 @@
 <!-- TODO: search function + replace the fake search bar in the home page -->
-<div>
-  {{text}}
+<ion-searchbar [(ngModel)]="query"
+                (keyup)="searchMusic()"
+                [showCancelButton]="shouldShowCancel"
+                animated="true"></ion-searchbar>
+
+<div class="search-dropdown" *ngIf="dropdownDisplay">
+  <div style="background-color:white">
+        <button class="search-item" *ngFor="let album of albums" >
+          <img class="search-item__img" src="{{album.img_url}}" />
+          <span class="search-item__name">{{album.name}}</span>
+            <!--pre>{{item | json}}</pre-->
+        </button>
+  </div>
 </div>
