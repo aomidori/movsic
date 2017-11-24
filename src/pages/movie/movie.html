@@ -7,11 +7,12 @@
 
 <ion-content padding>
 	<ion-thumbnail class="center" style="width:140px;">
-      <img src="assets/imgs/cover3.png">
+      <img src="{{movieInfo.poster_url}}">
 	</ion-thumbnail>
-	<h5>The Revenant</h5>
+	<h5>{{movieInfo.movie_title}}</h5>
 	<span style="color:white;"><a (click)="openSakamoto();">Ryuichi Sakamoto</a>, <a>Alva Noto</a>, <a>Bryce Dessner</a></span>
 	<p>Movie where Leonardo won his first Academy Award.</p>
+	<p>{{movieInfo.plot}}</p>
 	<button ion-button>Save</button>
 	<ion-list>
 		<button ion-item *ngFor="let song of tracks" (click)="playsong(song.preview_url)">

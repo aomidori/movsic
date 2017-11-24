@@ -40,6 +40,7 @@ export class SearchComponent {
                  for (let item of res.albums.items){
                   let images = item.images;
                   let album: MovieSoundtrack={
+                    movie_info: {},
                     spotify_id: item.id,
                     img_url: images[2].url,
                     name: item.name,

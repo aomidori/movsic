@@ -39,6 +39,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SpotifyServiceProvider } from '../providers/spotify-service/spotify-service';
 import { FirebaseProvider } from '../providers/firebase/firebase';
+import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SpotifyServiceProvider,
     FirebaseProvider,
-    InAppBrowser
+    InAppBrowser,
+    OmdbServiceProvider
   ]
 })
 export class AppModule {}
