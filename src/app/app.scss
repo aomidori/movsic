@@ -34,16 +34,44 @@
 }
 
 .movie-card{
-  img{
+  height: 200px;
+  width: 180px;
+  margin-right: 20px;
+
+  .movie-card-img{
     width: 120px;
     height: 120px;
   }
   .movie-card-info{
-    height: 60px;
     line-height: 1;
     p{
-      margin-top: 2px;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      overflow: hidden;
+      line-height: 1.2;
+      //text-overflow:ellipsis;
+      font-weight: 200;
+      width: 120px;
+
+      margin-top: 4px;
       margin-bottom: 2px;
+      font-size: 0.8em;
+    }
+    small{
+      color: grey;
+    }
+    .composor-names{
+      display: block;
+      width: 140px;
+      height: 20px;
+      white-space:nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+      line-height: 1.5;
+      a{
+        color: grey;
+      }
+      font-size: 0.8em;
     }
   }
 }

@@ -1,5 +1,5 @@
 export const rec_movies=[
-  '1tcgfoMTT1szjUeaikxRjA',
+  '5lyNebNgp8ZEhDwC2qOIWr',
   '7DDls7RWrCLvZgTVCJgfcq',
   '1FpzNqDbugk77xUj0qOrtQ',
   '70iCI16xKlhPlJJT7OIKGH',
@@ -13,7 +13,7 @@ export const rec_movies=[
 //temporary recommend lists:
 /*
 The Revenant
-Spotify: 1tcgfoMTT1szjUeaikxRjA
+Spotify: 5lyNebNgp8ZEhDwC2qOIWr
 
 Harry Potter and the Prisoner of Azkaban / Original Motion Picture Soundtrack
 7DDls7RWrCLvZgTVCJgfcq
