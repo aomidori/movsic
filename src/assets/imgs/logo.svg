@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="829px" height="244px" viewBox="0 0 829 244" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.1 (43504) - http://www.bohemiancoding.com/sketch -->
+    <title>logo_1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo_1">
+            <g id="Group-3" transform="translate(39.000000, -4.000000)">
+                <g id="logo-2" transform="translate(0.000000, 16.000000)">
+                    <g id="Group-2">
+                        <rect id="Rectangle" fill="#FFFFFF" x="18" y="139" width="35.6635509" height="35.6635509"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="36" y="105" width="35.3413647" height="35.3413647"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="54.4001896" y="69" width="36.7205476" height="36.7205476"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="73" y="35" width="35" height="35"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="0" y="174" width="35.7479811" height="35.7479811"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="202" y="140" width="35.4980717" height="35.4980717"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="220" y="105" width="35.5279366" height="35.5279366"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="238" y="70" width="35.7325925" height="35.7325925"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="257" y="34" width="36.4195015" height="36.4195015"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="274" y="0" width="35" height="35"></rect>
+                        <polygon id="Rectangle" fill="#FFFFFF" style="mix-blend-mode: lighten;" points="177 175 217.736032 175 217.736032 211.620835 177 211.620835 177 191.71691"></polygon>
+                        <g id="Group" transform="translate(141.500000, 90.000000) scale(-1, 1) translate(-141.500000, -90.000000) translate(88.000000, 3.000000)">
+                            <rect id="Rectangle" fill="#FFFFFF" transform="translate(18.500000, 155.043422) scale(-1, -1) translate(-18.500000, -155.043422) " x="0.456577614" y="137" width="36.0868448" height="36.0868448"></rect>
+                            <rect id="Rectangle" fill="#591CFF" transform="translate(36.500000, 119.500000) scale(-1, -1) translate(-36.500000, -119.500000) " x="19" y="102" width="35" height="35"></rect>
+                            <rect id="Rectangle" fill="#D800FF" transform="translate(54.500000, 84.500000) scale(-1, -1) translate(-54.500000, -84.500000) " x="37" y="67" width="35" height="35" rx="17.5"></rect>
+                            <rect id="Rectangle" fill="#FFFFFF" transform="translate(71.500000, 49.500000) scale(-1, -1) translate(-71.500000, -49.500000) " x="54" y="32" width="35" height="35"></rect>
+                            <rect id="Rectangle" fill="#FFFFFF" transform="translate(89.500000, 17.500000) scale(-1, -1) translate(-89.500000, -17.500000) " x="72" y="0" width="35" height="35"></rect>
+                        </g>
+                        <g id="Group" transform="translate(345.000000, 122.000000) scale(-1, 1) translate(-345.000000, -122.000000) translate(290.000000, 34.000000)">
+                            <rect id="Rectangle" fill="#000000" transform="translate(18.500000, 158.500000) scale(-1, -1) translate(-18.500000, -158.500000) " x="1" y="141" width="35" height="35"></rect>
+                            <rect id="Rectangle" fill="#FFFFFF" transform="translate(36.500000, 123.500000) scale(-1, -1) translate(-36.500000, -123.500000) " x="19" y="106" width="35" height="35"></rect>
+                            <rect id="Rectangle" fill="#FFFFFF" transform="translate(54.500000, 89.019834) scale(-1, -1) translate(-54.500000, -89.019834) " x="36.4801662" y="71" width="36.0396675" height="36.0396675"></rect>
+                            <rect id="Rectangle" fill="#FFFFFF" transform="translate(72.500000, 53.569767) scale(-1, -1) translate(-72.500000, -53.569767) " x="54.9302334" y="36" width="35.1395333" height="35.1395333"></rect>
+                            <rect id="Rectangle" fill="#FFFFFF" transform="translate(91.106298, 18.500000) scale(-1, -1) translate(-91.106298, -18.500000) " x="73" y="0.393702493" width="36.212595" height="36.212595"></rect>
+                            <rect id="Rectangle" fill="#FFFFFF" transform="translate(18.500000, 158.122512) scale(-1, -1) translate(-18.500000, -158.122512) " x="0.62251222" y="140.245024" width="35.7549756" height="35.7549756"></rect>
+                        </g>
+                    </g>
+                </g>
+                <text id="MOV-SIC" font-family="LemonMilkbold, Lemon/Milk" font-size="86" font-weight="bold" fill="#F13BFF">
+                    <tspan x="507" y="95">MOV</tspan>
+                    <tspan x="507" y="217">SIC</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
