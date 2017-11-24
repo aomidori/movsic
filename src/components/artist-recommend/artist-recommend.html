@@ -3,10 +3,10 @@
 <ion-grid>
   <ion-row>
     <ion-col col-4 *ngFor="let artist of recArtists">
-      <div class="artist-item">
+      <div class="artist-item center">
         <!--TODO: artist pages with id -->
         <ion-avatar (click)="goToArtist()">
-            <div class="circle artist-avatar"
+            <div class="circle artist-avatar center"
             [ngStyle]="{'background-image':'url('+ artist.img_url +')'}">
             </div>
         </ion-avatar>

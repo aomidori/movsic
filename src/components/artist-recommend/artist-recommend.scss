@@ -1,8 +1,15 @@
 artist-recommend {
   .artist-item{
    text-align: center;
+   margin-top: 10px;
+   margin-bottom: 15px;
     p{
+      font-weight: 200;
       font-size: 0.8em;
+      color:#ACACAC;
+    }
+    ion-avatar{
+      text-align: center;
     }
   }
 }
