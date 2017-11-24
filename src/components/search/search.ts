@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { SpotifyServiceProvider } from '../../providers/spotify-service/spotify-service';
-import { Album } from '../../models/album';
+import { MovieSoundtrack } from '../../models/movie-soundtrack';
 
 @Component({
   selector: 'search',
@@ -15,7 +15,7 @@ export class SearchComponent {
   token: string;
   searchRes: string;
   dropdownDisplay: boolean;
-  albums: Album[];
+  albums: MovieSoundtrack[];
 
   constructor(
     public nav: NavController,
@@ -39,10 +39,11 @@ export class SearchComponent {
                  this.searchRes = res.albums.items;
                  for (let item of res.albums.items){
                   let images = item.images;
-                  let album: Album={
+                  let album: MovieSoundtrack={
                     spotify_id: item.id,
                     img_url: images[2].url,
-                    name: item.name
+                    name: item.name,
+                    composors: []
                   };
                   this.albums.push(album);
                 }

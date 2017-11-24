@@ -1,22 +1,9 @@
-soundtrack-recommend {
-  ion-navbar{
-    height: 120px;
-  }
-  ion-content{
-    margin-top: 10px;
-  }
-  ion-searchbar{
-    margin-top: 15px;
-  }
-}
-.home-navbar{
-
-}
-.home-title{
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  font-style: italic;
-  font-size: 1.4em !important;
-
+.home-soundtrack-list{
+  margin-top: 40px;
+  padding-right: 200px;
+  height: 250px;
+  width: 330px;
+  display: flex;
+  overflow-x: auto;
+  //white-space: nowrap;
 }

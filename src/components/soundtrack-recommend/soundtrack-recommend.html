@@ -5,35 +5,16 @@
   Create a new components for the movie items!
   2. Slide effect
 -->
-<ion-grid>
-  <ion-row class="center">
-    <button ion-button class="movsic-tag">Movies</button>
-    <button ion-button class="movsic-tag">TV</button>
-  </ion-row>
-  <ion-row>
-    <ion-col col-6>
-      <div class="movie-card">
-        <img class="movie-card-img" src="assets/imgs/harry.png"/>
-        <div class="movie-card-info">
-          <p>Harry Potter</p>
-          <small>
-            John Williams
-          </small>
-        </div>
-      </div>
-    </ion-col>
-
-    <ion-col col-6>
-      <div class="movie-card">
-        <img class="movie-card-img" src="assets/imgs/jaws.png"/>
-        <div class="movie-card-info">
-          <p>Jaws</p>
-          <small>
-            John Williams
-          </small>
-        </div>
-      </div>
-    </ion-col>
-
-  </ion-row>
-</ion-grid>
+<div class="home-soundtrack-list">
+  <div class="movie-card" *ngFor="let soundtrack of recSoundtracks">
+    <img class="movie-card-img" src="{{soundtrack.img_url}}"/>
+    <div class="movie-card-info">
+      <p>{{soundtrack.name}}</p>
+      <small>{{soundtrack.composors[0].name}}</small>
+      <!--Too many mame it's too hard to display
+      span class="composor-names" *ngFor="let composor of soundtrack.composors">
+        <a>{{composor.name}}</a>,
+      </span-->
+    </div>
+  </div>
+</div>
