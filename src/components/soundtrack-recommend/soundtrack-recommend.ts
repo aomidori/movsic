@@ -25,6 +25,7 @@ export class SoundtrackRecommendComponent {
       for (let id of rec_movies){
         this._spotifyService.getAlbum(id, res.access_token).subscribe(item=>{
           let movie: MovieSoundtrack = {
+            movie_info: {},
             spotify_id: item.id,
             img_url:item.images[1].url,
             name: item.name,
