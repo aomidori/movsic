@@ -21,6 +21,7 @@
     "@angular/platform-browser": "5.0.0",
     "@angular/platform-browser-dynamic": "5.0.0",
     "@ionic-native/core": "4.3.3",
+    "@ionic-native/firebase": "^4.4.2",
     "@ionic-native/in-app-browser": "^4.4.2",
     "@ionic-native/splash-screen": "4.3.3",
     "@ionic-native/status-bar": "4.3.3",
@@ -30,6 +31,7 @@
     "angularfire2": "^5.0.0-rc.3",
     "cordova-android": "6.3.0",
     "cordova-plugin-device": "^1.1.4",
+    "cordova-plugin-firebase": "^0.1.24",
     "cordova-plugin-inappbrowser": "^1.7.2",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-splashscreen": "^4.0.3",
@@ -60,7 +62,8 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-sqlite-storage": {},
-      "cordova-plugin-inappbrowser": {}
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-firebase": {}
     },
     "platforms": [
       "android"
