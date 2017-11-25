@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { NavController, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { TabsPage } from '../tabs/tabs';
@@ -17,6 +18,7 @@ export class SignupPage {
   tabsPage = TabsPage;
 
   constructor(private afAuth: AngularFireAuth,
+    private afDatabase: AngularFireDatabase,
     public nav: NavController,
     public alertCtrl: AlertController) {
   }
@@ -27,25 +29,40 @@ export class SignupPage {
       if(result){
         this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
         this.afAuth.auth.currentUser.updateProfile({
-          displayName: user.username,
+          displayName: user.displayName,
           photoURL: 'https://www.gravatar.com/avatar/'+ Md5.hashStr(user.email.toLowerCase())
         });
-        this.nav.setRoot(TabsPage);
-        this.registerAlert();
+        //this.nav.setRoot(TabsPage);
+        this.createProfile();
+        this.registerSuccessAlert();
       }
     }catch(e){
       console.error(e);
+      let alert = this.alertCtrl.create({
+          title: 'Registration Failed!',
+          subTitle: 'Sorry! Please try it again.',
+          buttons: ['OK']
+      });
+      alert.present();
     }
 
   }
 
-  registerAlert(){
+  registerSuccessAlert(){
     let alert = this.alertCtrl.create({
         title: 'Welcome!',
         subTitle: 'You\'ve registered successfully!',
         buttons: ['OK']
     });
     alert.present();
+  }
+
+  createProfile(){
+    this.afAuth.authState.take(1).subscribe(auth => {
+      this.user.uid = auth.uid;
+      this.afDatabase.object(`user/${auth.uid}`).set(this.user)
+        .then(()=> this.nav.setRoot(TabsPage))
+    });
   }
 
 
