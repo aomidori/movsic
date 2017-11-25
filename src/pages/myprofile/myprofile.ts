@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,OnInit, OnDestroy, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FollowServiceProvider } from '../../providers/follow-service/follow-service';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase';
+import { User } from '../../models/user';
+
 
 /**
  * Generated class for the MyprofilePage page.
@@ -15,9 +20,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MyprofilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private followSvc: FollowServiceProvider,
+              public nav: NavController,
+              private afAuth: AngularFireAuth
+  ) {
+
   }
 
+  ngOnInit() {
+
+
+  }
+  signOut(){
+    this.afAuth.auth.signOut()
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyprofilePage');
   }

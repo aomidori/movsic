@@ -24,7 +24,4 @@ export class OmdbServiceProvider {
       .map(res=>res.json());
   }
 
-
-
-
 }

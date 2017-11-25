@@ -10,6 +10,12 @@
 
 
 <ion-content padding >
+  You are logged in as <strong>{{currentUser?.username}} </strong><hr>
+  <div *ngFor="let user of users | async">
+    <user-card [user]="user" [currentUser]="currentUser"></user-card>
+  </div>
+  <button ion-button color="primary" block (click)="signOut()">SIGN OUT</button>
+
   <div class="user-card center mgt30">
     <img class="circle" height="80" width="80" src="assets/imgs/user-profile.png"/>
     <div style="color:white;">

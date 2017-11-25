@@ -1,4 +1,16 @@
 <!-- Generated template for the UserCardComponent component -->
 <div>
-  {{text}}
+  <div class="profile">
+    <img [src]="user.img" width="50px">
+    @{{user.username || null }} has <strong>{{followerCount}}</strong> followers
+    <div *ngIf="isFollowing; then unfollowButton else followButton">
+      button renders here
+    </div>
+  </div>
+  <ng-template #followButton>
+    <button class="button is-info" (click)="toggleFollow()">Follow</button>
+  </ng-template>
+  <ng-template #unfollowButton>
+    <button class="button is-warning" (click)="toggleFollow()">Unfollow</button>
+  </ng-template>
 </div>
