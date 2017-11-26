@@ -46,7 +46,7 @@ export class SpotifyServiceProvider {
     headers.append('Content-Type' , 'application/x-www-form-urlencoded');
     //headers.append('Content-Type', 'application/json');
     //this.tokenUrl = 'https://accounts.spotify.com/api/token?grant_type=client_credentials';
-    console.log(headers);
+    //console.log(headers);
     return this._http.post(this.tokenUrl, params , {headers : headers})
         .map(res=>res.json());
   }

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { OmdbServiceProvider } from '../../providers/omdb-service/omdb-service';
 import { SpotifyServiceProvider } from '../../providers/spotify-service/spotify-service';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { ArtistPage } from '../artist/artist';
 import { MovieSoundtrack } from '../../models/movie-soundtrack';
 import { MovieInfo } from '../../models/movie-info';
@@ -15,6 +16,7 @@ import { MovieInfo } from '../../models/movie-info';
 export class MoviePage {
   movieOST={} as MovieSoundtrack;
   movieInfo={} as MovieInfo;
+  movieId: string; //try to get from params;
 
   //name: string;
   //year: number;
@@ -24,10 +26,12 @@ export class MoviePage {
 
   constructor(
     public nav: NavController,
+    public navParams: NavParams,
     private _spotifyService:SpotifyServiceProvider,
     private _omdbService: OmdbServiceProvider,
+    private _dbService: FirebaseProvider,
     private iab: InAppBrowser) {
-
+        this.movieId = this.navParams.get('movieParams');
   }
 
 
@@ -63,6 +67,12 @@ export class MoviePage {
 
       })
 
+  }
+
+  registerNewMovieInfo(id:string, data: MovieInfo){
+    if(!this._dbService.ifMovieInfoExist(id)){
+      this._dbService.registerNewMovieInfo(id,data);
+    }
   }
 
   playsong(url:string){

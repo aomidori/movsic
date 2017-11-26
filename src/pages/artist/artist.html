@@ -6,21 +6,20 @@
 -->
 <ion-header>
   <ion-navbar>
-	<ion-title>Ryuichi Sakamoto</ion-title>
+	<ion-title>{{artistData.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
     <ion-thumbnail class="center" style="width:140px;">
-      <img class="circle" height="140" width="140" src="assets/imgs/composors/ryuichi.png">
+      <img class="circle" height="140" width="140" src="{{artistData.img_url}}">
 	</ion-thumbnail>
 	<div class="user-card center mgt30">
-      <h5 >Ryuichi Sakamoto</h5>
-      <p>25k followers | 10 following</p>
-	  <button ion-button>Follow</button>
+      <h5 >{{artistData.name}}</h5>
+	  <button ion-button>Save</button>
 	</div>
-  	
+
 	<h3>Soundtracks</h3>
 
 

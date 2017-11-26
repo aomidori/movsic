@@ -1,4 +1,13 @@
-<!-- Generated template for the UserCardComponent component -->
-<div>
-  {{text}}
+<div class="user-card center mgt30">
+  <img class="circle" height="80" width="80" src="{{(userData | async)?.photoURL}}"/>
+  <div style="color:white;">
+    <h5>{{(userData | async)?.displayName}}</h5>
+    <p>25 followers | 52 following</p>
+  </div>
+  <template #followButton>
+    <button class="is-info" (click)="toggleFollow()">Follow</button>
+  </template>
+  <template #unfollowButton>
+    <button class="is-warning" (click)="toggleFollow()">Unfollow</button>
+  </template>
 </div>
