@@ -56,6 +56,7 @@ export class LoginPage {
         //console.log("userdata??"+JSON.stringify(this.userData));
         this.user.displayName = result.user.displayName;
         this.user.email = result.user.email;
+        this.user.photoURL = result.user.photoURL;
         this.user.password = 'userfromfacebook';
         return true;
     }).catch(function(e){

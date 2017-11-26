@@ -54,7 +54,9 @@ import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
   imports: [
     BrowserModule, HttpModule,
     ComponentsModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsPlacement: 'bottom',
+    }),
     //IonicStorageModule.forRoot(),
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),

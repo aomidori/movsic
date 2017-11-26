@@ -4,7 +4,7 @@ import { ArtistPage } from '../../pages/artist/artist';
 import { Artist } from '../../models/artist';
 import { rec_composors } from '../../temporary/rec-composors';
 import { SpotifyServiceProvider } from '../../providers/spotify-service/spotify-service';
-
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 @Component({
   selector: 'artist-recommend',
@@ -17,7 +17,8 @@ export class ArtistRecommendComponent {
 
   constructor(
     public nav: NavController,
-    private _spotifyService: SpotifyServiceProvider
+    private _spotifyService: SpotifyServiceProvider,
+    private _dbService: FirebaseProvider
   ) {
     this.recArtists = [];
   }
@@ -27,16 +28,23 @@ export class ArtistRecommendComponent {
         this._spotifyService.getArtist(id, res.access_token).subscribe(item => {
           let artist: Artist={
             spotify_id: item.id,
-            img_url:item.images[1].url,
+            img_url:item.images[0].url,
             name: item.name
           };
+          this.registerNewArtist(item.id,artist);
           this.recArtists.push(artist);
         });
       }
     });
   }
-  public goToArtist(){
-    this.nav.push(ArtistPage);
+
+  registerNewArtist(id:string, data:Artist){
+    if(!this._dbService.ifArtistExist(id)){
+      this._dbService.registerArtist(id,data);
+    }
+  }
+  public goToArtist(id: string){
+    this.nav.push(ArtistPage, {artistId: id});
   }
 
 }

@@ -22,7 +22,8 @@ export class TabsPage {
 
   constructor(
     private afAuth: AngularFireAuth, private toast: ToastController,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController
+    ) {
   }
 
   ionViewWillLoad(){
@@ -41,4 +42,13 @@ export class TabsPage {
       }
     });
   }
+  platform.ready().then(() => {
+	Keyboard.onKeyboardShow().subscribe(() => {
+	  document.body.classList.add('keyboard-is-open');
+	});
+
+	Keyboard.onKeyboardHide().subscribe(() => {
+	  document.body.classList.remove('keyboard-is-open');
+	});
+  });
 }

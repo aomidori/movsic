@@ -83,3 +83,11 @@
   height: 80px;
   background-size: cover;
 }
+
+body.keyboard-is-open ion-tabbar {
+  display: none;
+}
+
+body.keyboard-is-open scroll-content {
+  margin-bottom: 0 !important;
+}
