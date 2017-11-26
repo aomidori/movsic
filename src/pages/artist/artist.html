@@ -6,17 +6,17 @@
 -->
 <ion-header>
   <ion-navbar>
-	<ion-title>{{artistData.name}}</ion-title>
+	<ion-title>{{(artistData|async)?.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
     <ion-thumbnail class="center" style="width:140px;">
-      <img class="circle" height="140" width="140" src="{{artistData.img_url}}">
+      <img class="circle" height="140" width="140" src="{{(artistData | async)?.img_url}}">
 	</ion-thumbnail>
 	<div class="user-card center mgt30">
-      <h5 >{{artistData.name}}</h5>
+      <h5 >{{(artistData | async)?.name}}</h5>
 	  <button ion-button>Save</button>
 	</div>
 

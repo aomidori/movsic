@@ -28,7 +28,7 @@ export class SoundtrackRecommendComponent {
           let movie: MovieSoundtrack = {
             movie_info: {},
             spotify_id: item.id,
-            img_url:item.images[1].url,
+            img_url:item.images[0].url,
             name: item.name,
             composors: []
           }

@@ -28,7 +28,7 @@ export class ArtistRecommendComponent {
         this._spotifyService.getArtist(id, res.access_token).subscribe(item => {
           let artist: Artist={
             spotify_id: item.id,
-            img_url:item.images[1].url,
+            img_url:item.images[0].url,
             name: item.name
           };
           this.registerNewArtist(item.id,artist);

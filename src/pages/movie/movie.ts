@@ -71,7 +71,7 @@ export class MoviePage {
 
   registerNewMovieInfo(id:string, data: MovieInfo){
     if(!this._dbService.ifMovieInfoExist(id)){
-      this._dbService.registerNewMovieInfo(id,data);
+      this._dbService.registerMovieInfo(id,data);
     }
   }
 

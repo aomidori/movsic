@@ -18,6 +18,7 @@ import { Artist } from '../../models/artist';
 export class FirebaseProvider {
   private currentUserId: string;
   private currentUserData: Observable<User>;
+  private artistData: Observable<Artist>;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -33,7 +34,6 @@ export class FirebaseProvider {
     });
     if(this.currentUserId){
       this.currentUserData = this.afDatabase.object(`user/${this.currentUserId}`).valueChanges();
-      console.log(this.currentUserData);
     }
   }
 
@@ -104,7 +104,7 @@ export class FirebaseProvider {
   }
   ifMovieInfoExist(albumId: string){
     let result = false;
-    firebase.database()/ref(`/movieSoundtrack/`+albumId+'/movieInfo').once('value').then(snapshot =>{
+    firebase.database().ref(`/movieSoundtrack/`+albumId+'/movieInfo').once('value').then(snapshot =>{
       if(!snapshot.val()){
         result =false;
       }else result =true;
@@ -117,6 +117,7 @@ export class FirebaseProvider {
       if(!snapshot.val()){
         result = false;
       }else{
+        console.log("from firabse ts: artist exist");
         result = true;
       }
     });
@@ -136,9 +137,9 @@ export class FirebaseProvider {
     return this.afDatabase.object(`movieSoundtrack/${albumId}`).valueChanges();
   }
   getArtist(artistId: string){
-    return this.afDatabase.object(`artist/${artistId}`).valueChanges();
+    this.artistData = this.afDatabase.object(`artist/${artistId}`).valueChanges();
+    return this.artistData;
   }
-  
 
 
 }
