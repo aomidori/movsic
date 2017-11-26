@@ -1,22 +1,23 @@
 import { Component,OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { SpotifyServiceProvider } from '../../providers/spotify-service/spotify-service';
 import { MovieSoundtrack } from '../../models/movie-soundtrack';
 import { Artist } from '../../models/artist';
 import { rec_movies } from '../../temporary/rec-movies';
-
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 @Component({
   selector: 'soundtrack-recommend',
   templateUrl: 'soundtrack-recommend.html'
 })
 export class SoundtrackRecommendComponent {
-
   recSoundtracks: MovieSoundtrack[];
 
   constructor(
     public nav: NavController,
-    private _spotifyService: SpotifyServiceProvider
+    public params: NavParams,
+    private _spotifyService: SpotifyServiceProvider,
+    private _dbService: FirebaseProvider
   ) {
     this.recSoundtracks = [];
   }
@@ -34,16 +35,25 @@ export class SoundtrackRecommendComponent {
           for (let a of item.artists){
             let artist: Artist = {
               spotify_id: a.id,
-              img_url:'',
+              img_url: '',
               name:a.name
             }
             movie.composors.push(artist);
           }
+          this.registerNewMovie(item.id, movie);
           this.recSoundtracks.push(movie);
+
         });
       }
     });
     console.log(this.recSoundtracks);
+  }
+
+
+  registerNewMovie(id: string, data: MovieSoundtrack){
+    if(!this._dbService.ifMovieSoundtrackExist(id)){
+      this._dbService.registerMovieSoundtrack(id, data);
+    }
   }
 
 

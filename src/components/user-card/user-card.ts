@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/user';
-import { UserServiceProvider } from '../../providers/user-service/user-service';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { size } from 'lodash';
@@ -29,14 +29,14 @@ export class UserCardComponent {
   constructor(
     public nav: NavController,
     public params: NavParams,
-    private userService: UserServiceProvider)
+    private dbService: FirebaseProvider)
   {
-      this.userService.init();
+      this.dbService.init();
   }
 
   ngOnInit(){
-    this.currentUserId = this.userService.getCurrentUserId();
-    this.userData = this.userService.getCurrentUserData();
+    this.currentUserId = this.dbService.getCurrentUserId();
+    this.userData = this.dbService.getCurrentUserData();
   }
 
   /*ngOnInit(){
@@ -60,9 +60,9 @@ export class UserCardComponent {
 
   toggleFollow(){
     if(this.isFollowing){
-      this.userService.unfollow(this.currentUserId, this.userId);
+      this.dbService.unfollow(this.currentUserId, this.userId);
     }else{
-      this.userService.follow(this.currentUserId, this.userId);
+      this.dbService.follow(this.currentUserId, this.userId);
     }
   }
 
