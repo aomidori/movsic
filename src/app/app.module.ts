@@ -40,6 +40,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SpotifyServiceProvider } from '../providers/spotify-service/spotify-service';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
+import { UserServiceProvider } from '../providers/user-service/user-service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,9 @@ import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
   imports: [
     BrowserModule, HttpModule,
     ComponentsModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsPlacement: 'bottom',
+    }),
     //IonicStorageModule.forRoot(),
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
@@ -77,7 +80,8 @@ import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
     SpotifyServiceProvider,
     FirebaseProvider,
     InAppBrowser,
-    OmdbServiceProvider
+    OmdbServiceProvider,
+    UserServiceProvider
   ]
 })
 export class AppModule {}

@@ -22,7 +22,8 @@ export class TabsPage {
 
   constructor(
     private afAuth: AngularFireAuth, private toast: ToastController,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController
+    ) {
   }
 
   ionViewWillLoad(){
