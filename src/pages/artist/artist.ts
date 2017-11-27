@@ -93,7 +93,7 @@ export class ArtistPage {
             img_url: ''
           });
         } //img urls will be filled in movie page.
-        this.nav.push(MoviePage, {soundtrack: ost});
+        this.nav.push(MoviePage, {soundtrack: ost, artistId: this.artistId});
       })
     })
 

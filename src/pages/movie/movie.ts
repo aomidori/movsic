@@ -25,6 +25,7 @@ export class MoviePage {
   //year: number;
   searchRes: string;
   tracks: any;
+  defaultComposorId: string;
   ifVariousArtists: boolean;
 
   constructor(
@@ -35,6 +36,7 @@ export class MoviePage {
     private _dbService: FirebaseProvider,
     private iab: InAppBrowser) {
         this.movieOST = navParams.get('soundtrack');
+        this.defaultComposorId = navParams.get('artistId');
         console.log(this.movieOST);
         this.soundtrackId = this.movieOST.spotify_id;
         this.soundtrackName = this.movieOST.name;
@@ -73,7 +75,7 @@ export class MoviePage {
             for (const artist of this.movieOST.composors){
               this._spotifyService.getArtist(artist.spotify_id, res.access_token,)
                 .subscribe(res=>{
-                  if(res.images)  artist.img_url = res.images[0].url;
+                  if(res.images && res.images[0])  artist.img_url = res.images[0].url;
                 })
               i++;
             }
@@ -111,7 +113,9 @@ export class MoviePage {
   variousArtistsHandler(){
     const composors = this.movieOST.composors;
     this._spotifyService.getToken().subscribe(res=>{
-        let defaultComposorId = this.tracks[0].artists[0].id;
+        let defaultComposorId = '';
+        if(this.defaultComposorId) defaultComposorId = this.defaultComposorId;
+        else defaultComposorId = this.tracks[0].artists[0].id;
         this._spotifyService.getArtist(defaultComposorId, res.access_token).subscribe(artist=>{
           let url = '';
           console.log("try to get"+ artist.name);

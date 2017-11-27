@@ -12,8 +12,10 @@
 
 
 <ion-content padding>
-    <ion-thumbnail class="center" style="width:140px;">
-      <img class="circle" height="140" width="140" src="{{(artistData | async)?.img_url}}">
+    <ion-thumbnail style="width:100%;">
+      <div class="artist-avatar circle center"
+              [ngStyle]="{'background-image':'url('+(artistData|async)?.img_url+')'}">
+      </div>
 	</ion-thumbnail>
 	<div class="user-card center mgt30">
       <h5 >{{(artistData | async)?.name}}</h5>
