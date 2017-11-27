@@ -1,6 +1,6 @@
 <ion-header>
 	<ion-navbar>
-		<ion-title>The Renevant</ion-title>
+		<ion-title>{{movieInfo.movie_title}}</ion-title>
 	</ion-navbar>
 </ion-header>
 
@@ -9,9 +9,16 @@
 	<ion-thumbnail class="center" style="width:140px;">
       <img src="{{movieInfo.poster_url}}">
 	</ion-thumbnail>
+
+	<div class="row composor-list" >
+		<div *ngFor = "let composor of movieOST.composors" class="composor-item" (click)="goToArtist(composor.spotify_id)">
+			<div class="circle artist-avatar-small center"
+						[ngStyle]="{'background-image': 'url('+composor.img_url+')'}">
+			</div>
+			<p>{{composor.name}}</p>
+		</div>
+	</div>
 	<h5>{{movieInfo.movie_title}}</h5>
-	<span style="color:white;"><a (click)="openSakamoto();">Ryuichi Sakamoto</a>, <a>Alva Noto</a>, <a>Bryce Dessner</a></span>
-	<p>Movie where Leonardo won his first Academy Award.</p>
 	<p>{{movieInfo.plot}}</p>
 	<button ion-button>Save</button>
 	<ion-list>
