@@ -5,6 +5,8 @@ import { NavController, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { TabsPage } from '../tabs/tabs';
 
+import { LocalstorageProvider } from "../../providers/localstorage/localstorage";
+
 import { User } from '../../models/user';
 import { Md5 } from 'ts-md5/dist/md5';
 
@@ -20,7 +22,8 @@ export class SignupPage {
   constructor(private afAuth: AngularFireAuth,
     private afDatabase: AngularFireDatabase,
     public nav: NavController,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    private localStorage: LocalstorageProvider,) {
   }
 
   async register(user: User){
@@ -60,6 +63,7 @@ export class SignupPage {
   createProfile(){
     this.afAuth.authState.take(1).subscribe(auth => {
       this.user.uid = auth.uid;
+      this.localStorage.setUser(this.user.uid)
       this.afDatabase.object(`user/${auth.uid}`).set(this.user)
         .then(()=> this.nav.setRoot(TabsPage))
     });

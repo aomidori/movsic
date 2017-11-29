@@ -9,6 +9,10 @@ import { Observable } from 'rxjs/Observable';
 import { SignupPage } from '../signup/signup';
 import { TabsPage } from '../tabs/tabs';
 
+import { LocalstorageProvider } from "../../providers/localstorage/localstorage";
+import {FirebaseProvider} from "../../providers/firebase/firebase";
+
+
 import { User } from '../../models/user';
 
 import 'rxjs/add/operator/take';
@@ -18,7 +22,7 @@ import 'rxjs/add/operator/take';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  user = {} as User;  // an objecct as User
+  user = {} as User;  // an object as User
   userData: Observable<User>;
   signupPage = SignupPage;
 
@@ -26,13 +30,23 @@ export class LoginPage {
     public nav: NavController, private alertCtrl: AlertController,
     private afAuth: AngularFireAuth,
     private afDatabase: AngularFireDatabase,
-    private _http: Http) {
+    private _http: Http,
+    private localStorage: LocalstorageProvider,
+    private FirebaseService: FirebaseProvider
+    ) {
   }
 
+  ionViewWillLoad(){
+    // let userId = this.localStorage.getUser();
+    // if (userId != null){
+    //   console.log(userId,'userididid')
+    // }
+  }
   async login(user: User){
     try{
       const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
       if(result){
+        this.localStorage.setUser(result.uid);
         this.nav.setRoot(TabsPage);
       }
     }catch(e){
@@ -73,6 +87,7 @@ export class LoginPage {
     this.afAuth.authState.take(1).subscribe(auth => {
       let userId = auth.uid; //get user ID
       this.user.uid = userId;
+      this.localStorage.setUser(userId);
       firebase.database().ref('/user/' + userId).once('value').then( snapshot => {
         if(!snapshot.val()){ //if user data doesnt exist
             this.afDatabase.object(`user/${auth.uid}`).set(this.user);
