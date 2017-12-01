@@ -19,11 +19,13 @@ export class FirebaseProvider {
   private currentUserId: string;
   private currentUserData: Observable<User>;
   private artistData: Observable<Artist>;
+  private soundtrackData: Observable<MovieSoundtrack>;
 
   constructor(
     private afAuth: AngularFireAuth,
     private afDatabase: AngularFireDatabase,
-    private _spotifyService: SpotifyServiceProvider
+    private _spotifyService: SpotifyServiceProvider,
+    private _omdbService: OmdbServiceProvider
   ) {
   }
 
@@ -117,7 +119,18 @@ export class FirebaseProvider {
       if(!snapshot.val()){
         result = false;
       }else{
-        console.log("from firabse ts: artist exist");
+        result = true;
+      }
+    });
+    return result;
+  }
+  ifArtistHasSoundtrack(artistId: string, ostId: string){
+    let result = false;
+    firebase.database().ref('/artist/'+artistId+'/movieSoundtracks/'+ostId).once('value').then(snapshot =>{
+      if(!snapshot.val()){
+        result = false;
+      }else{
+        console.log("from firabse ts: artist has this album");
         result = true;
       }
     });
@@ -126,19 +139,59 @@ export class FirebaseProvider {
   registerMovieSoundtrack(albumId: string, ost: MovieSoundtrack){
     this.afDatabase.object(`movieSoundtrack/${albumId}`).set(ost);
   }
+  updateMovieSoundtrack(albumId: string, ost: MovieSoundtrack){
+    this.afDatabase.object(`movieSoundtrack/${albumId}`).update(ost);
+  }
   registerMovieInfo(id:string, info: MovieInfo){
     this.afDatabase.object(`movieSoundtrack/${id}/movieInfo`).set(info);
   }
 
   registerArtist(artistId: string, artistInfo: Artist){
+    console.log("register artist: "+ artistInfo);
     this.afDatabase.object(`artist/${artistId}`).set(artistInfo);
   }
   getMovieSoundtrack(albumId: string){
-    return this.afDatabase.object(`movieSoundtrack/${albumId}`).valueChanges();
+    this.soundtrackData = this.afDatabase.object(`movieSoundtrack/${albumId}`).valueChanges();
+    return this.soundtrackData;
   }
   getArtist(artistId: string){
     this.artistData = this.afDatabase.object(`artist/${artistId}`).valueChanges();
     return this.artistData;
+  }
+
+
+  /*
+  *  Our AI cross search functions
+  */
+  AutoRegisterArtist(artistId: string){
+    this._spotifyService.getToken().subscribe(res=>{
+      this._spotifyService.getArtist(artistId, res.access_token).subscribe(result =>{
+        let artist: Artist = {
+          spotify_id: result.id,
+          img_url: result.images[0].url,
+          name: result.name
+        }
+        this.afDatabase.object(`artist/${artistId}`).set(artist);
+      })
+    })
+  }
+  AutoRegisterMovie(title: string){
+    //with title search from omdb automaticlly.
+    this._omdbService.searchMovie(title).subscribe(res=>{
+      if(!res.Response) return;
+      let firstRes = res.Search[0];
+      let movieInfo: MovieInfo={
+        imdb_id: firstRes.imdbID,
+        movie_title: firstRes.Title,
+        poster_url: firstRes.Poster,
+        year: firstRes.Year,
+        plot: ''
+      };
+      this._omdbService.getMovie(firstRes.imdbID).subscribe(res=>{
+        movieInfo.plot = res.Plot;
+      });
+      this.registerMovieInfo(firstRes.imdbID, movieInfo);
+    })
   }
 
 

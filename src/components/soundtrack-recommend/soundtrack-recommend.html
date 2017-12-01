@@ -11,7 +11,7 @@
 </div>
 <div class="home-soundtrack-list">
   <div class="movie-card" *ngFor="let soundtrack of recSoundtracks">
-    <img class="movie-card-img" src="{{soundtrack.img_url}}"/>
+    <img class="movie-card-img" (click)="goToSoundtrack(soundtrack)" src="{{soundtrack.img_url}}"/>
     <div class="movie-card-info">
       <p>{{soundtrack.name}}</p>
       <small>{{soundtrack.composors[0].name}}</small>

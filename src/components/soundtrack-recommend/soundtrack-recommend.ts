@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SpotifyServiceProvider } from '../../providers/spotify-service/spotify-service';
 import { MovieSoundtrack } from '../../models/movie-soundtrack';
+import { MoviePage } from '../../pages/movie/movie';
 import { Artist } from '../../models/artist';
 import { rec_movies } from '../../temporary/rec-movies';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
@@ -56,6 +57,9 @@ export class SoundtrackRecommendComponent {
     }
   }
 
+  public goToSoundtrack(ost: MovieSoundtrack){
+    this.nav.push(MoviePage, {soundtrack: ost});
+  }
 
 
 

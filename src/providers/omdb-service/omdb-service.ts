@@ -25,6 +25,30 @@ export class OmdbServiceProvider {
   }
 
 
+  extractMovieName(name: string){
+    name = name.toLowerCase();
+    if(name.indexOf('(')>0) name = name.substr(0,name.indexOf('('));
+    if(name.indexOf('/')>0) name = name.substr(0,name.indexOf('/'));
+    if(name.indexOf('-')>0) name = name.substr(0,name.indexOf('-'));
+
+    name = name.replace('original motion picture soundtracks', '');
+    name = name.replace('original soundtracks', '');
+    name = name.replace('original motion picture soundtrack', '');
+    name = name.replace('original soundtrack', '');
+    name = name.replace('original film soundtrack', '');
+    name = name.replace('soundtrack', '');
+    name = name.replace('soundtracks', '');
+    name = name.replace('o.s.t','');
+    name = name.replace('/', '');
+    name = name.replace('-', '');
+    name = name.replace('(', '');
+    name = name.replace(')','');
+    name = name.trim();
+    return name;
+  }
+
+
+
 
 
 }

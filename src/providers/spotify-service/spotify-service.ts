@@ -85,7 +85,7 @@ export class SpotifyServiceProvider {
   getArtistAlbums(id:string, token:string){
     let headers = new Headers({'Authorization':'Bearer '+token});
 
-    var url = 'https://api.spotify.com/v1/artists/'+id+'/albums?market=SE';
+    var url = 'https://api.spotify.com/v1/artists/'+id+'/albums?market=SE&limit=50';
     return this._http.get(url , {headers : headers})
         .map((res: Response) => res.json())
   }
@@ -108,6 +108,14 @@ export class SpotifyServiceProvider {
 
     return this._http.get(this.AlbumUrl , {headers : headers})
         .map((res: Response) => res.json())
+
+  }
+  getAlbumArtists(id: string, token: string){
+    let headers = new Headers({'Authorization':'Bearer '+token});
+
+    this.AlbumUrl = 'https://api.spotify.com/v1/albums/'+id;
+    return this._http.get(this.AlbumUrl , {headers : headers})
+        .map((res: Response) => res.json().artists)
 
   }
 
