@@ -2,9 +2,21 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ACR_CONFIG } from "../../app/app.acr.config";
 import { Http, Headers } from "@angular/http";
-import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
+//https://yanxiaodi.gitbooks.io/ionic2-guide/content/resources/third-party-libs.html
 
-// import { crypto fs}
+// import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
+// https://github.com/WeslleyDeSouza/SecureAngularLogin
+//https://www.npmjs.com/package/crypto-js
+import * as CryptoJS from 'crypto-js';
+import * as crypto from 'crypto';
+import request from 'request';
+import { readFileSync} from 'fs';
+import { FileOpener } from '@ionic-native/file-opener';
+import { Buffer } from 'buffer';
+
+
+import { FileTransfer, FileTransferObject, FileUploadOptions } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 /*
   Generated class for the AcrProvider provider.
@@ -21,7 +33,10 @@ export class AcrProvider {
   constructor(public http: HttpClient,
               public _http:Http,
               public _request: Request,
-              private mediaCapture: MediaCapture
+
+              private fileOpener: FileOpener,
+              private transfer: FileTransfer,
+              private file: File,
   ) {
     console.log('Hello AcrProvider Provider');
   }
@@ -35,11 +50,10 @@ export class AcrProvider {
     access_key: this.access_key,
     access_secret: this.access_secret
   };
-  recognition(filePath,options=this.defaultOption){
-    let data = fs.readFileSync(filePath);
-
-    let current_data = new Date();
-    let timestamp = current_data.getTime()/1000;
+  identify(filePath) {
+    function buildStringToSign(method, uri, accessKey, dataType, signatureVersion, timestamp) {
+      return [method, uri, accessKey, dataType, signatureVersion, timestamp].join('\n');
+    }
 
     function sign(signString, accessSecret) {
       return crypto.createHmac('sha1', accessSecret)
@@ -47,44 +61,42 @@ export class AcrProvider {
         .digest().toString('base64');
     }
 
-    function buildStringToSign(method, uri, accessKey, dataType, signatureVersion, timestamp) {
-      return [method, uri, accessKey, dataType, signatureVersion, timestamp].join('\n');
-    }
+    let bitmap = readFileSync(filePath);
+    let data = new Buffer(bitmap);
+
+    let current_data = new Date();
+    let timestamp = current_data.getTime()/1000;
 
     let stringToSign = buildStringToSign('POST',
-      options.endpoint,
-      options.access_key,
-      options.data_type,
-      options.signature_version,
+      this.defaultOption.endpoint,
+      this.defaultOption.access_key,
+      this.defaultOption.data_type,
+      this.defaultOption.signature_version,
       timestamp);
-
-    let signature = sign(stringToSign, options.access_secret);
+    let signature = sign(stringToSign, this.defaultOption.access_secret);
 
     let formData = {
       sample: data,
-      access_key:options.access_key,
-      data_type:options.data_type,
-      signature_version:options.signature_version,
+      access_key:this.defaultOption.access_key,
+      data_type:this.defaultOption.data_type,
+      signature_version:this.defaultOption.signature_version,
       signature:signature,
       sample_bytes:data.length,
       timestamp:timestamp,
     };
-    let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-    headers.append('Content-Type', 'application/json');
-    let url = "http://"+options.host + options.endpoint;
-    return this._http.post(url,formData,{headers:headers})
-      .map(res => res.json())
-    // this._request.post({
-    //   url: "http://"+options.host + options.endpoint,
-    //   method: 'POST',
-    //   formData: formData
-    // }, cb);
-  }
-  // https://ionicframework.com/docs/native/media-capture/
-  recordAudio(){
-    this.mediaCapture.captureAudio().then(
-      (data: MediaFile[]) => console.log(data),
-      (err: CaptureError) => console.error(err)
-    );
+    request.post({
+      url: "http://"+this.defaultOption.host + this.defaultOption.endpoint,
+      method: 'POST',
+      formData: formData
+    }, function (err,res,body) {
+      if(err){
+        console.log(err);
+        return null;
+      }
+      if(body){
+        console.log(body);
+        return body.json();
+      }
+    });
   }
 }
