@@ -34,6 +34,7 @@ import { MyprofilePage } from '../pages/myprofile/myprofile';
 import { TabsPage } from '../pages/tabs/tabs';
 import { MoviePage } from '../pages/movie/movie';
 import { ArtistPage} from '../pages/artist/artist';
+import { RecomPage } from '../pages/recom/recom';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -49,7 +50,8 @@ import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
     AboutPage,
     HomePage, ExplorePage, MessagePage, MyprofilePage,
     TabsPage,
-    MoviePage, ArtistPage
+    MoviePage, ArtistPage,
+	RecomPage
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -70,7 +72,8 @@ import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
     AboutPage,
     HomePage, ExplorePage, MessagePage, MyprofilePage,
     TabsPage,
-    MoviePage, ArtistPage
+    MoviePage, ArtistPage,
+	RecomPage
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { App, ViewController, NavController } from 'ionic-angular';
 import { MoviePage } from '../../pages/movie/movie';
+import { RecomPage } from '../../pages/recom/recom';
 
 /**
  * Generated class for the ExploreCardsComponent component.
@@ -14,7 +15,7 @@ import { MoviePage } from '../../pages/movie/movie';
 })
 export class ExploreCardsComponent {
   movielink = MoviePage;
-
+  recomPage = RecomPage;
   constructor(public nav: NavController) {
   }
 
