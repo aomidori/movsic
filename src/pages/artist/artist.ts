@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { SpotifyServiceProvider } from '../../providers/spotify-service/spotify-service';
@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 import { MoviePage } from '../movie/movie';
+import { ReportPage } from '../report/report';
 
 import { Artist } from '../../models/artist';
 import { MovieSoundtrack } from '../../models/movie-soundtrack';
@@ -152,6 +153,10 @@ export class ArtistPage {
       this._dbService.saveArtist(currentUserId, this.artistId);
     }
     this.ifSaved(); //NECESSARY!!!To update the text
+  }
+
+  goToReport(){
+    this.nav.push(ReportPage);
   }
 
 

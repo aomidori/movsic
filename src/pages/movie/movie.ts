@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { OmdbServiceProvider } from '../../providers/omdb-service/omdb-service';
 import { SpotifyServiceProvider } from '../../providers/spotify-service/spotify-service';
@@ -7,6 +7,7 @@ import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { ArtistPage } from '../artist/artist';
 import { MovieSoundtrack } from '../../models/movie-soundtrack';
 import { MovieInfo } from '../../models/movie-info';
+import { ReportPage } from '../report/report';
 import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
@@ -177,6 +178,10 @@ export class MoviePage {
         this._dbService.saveMovie(currentUserId, this.soundtrackId);
       }
       this.ifSaved();
+  }
+
+  goToReport(){
+    this.nav.push(ReportPage);
   }
 
 
