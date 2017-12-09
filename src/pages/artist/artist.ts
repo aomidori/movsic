@@ -20,6 +20,7 @@ import { Album } from '../../models/album';
   templateUrl: 'artist.html',
 })
 export class ArtistPage {
+  saveText: string;
   artistId: string;
   artistData: Observable<Artist>;
   albums: Album[];
@@ -30,12 +31,14 @@ export class ArtistPage {
     public nav: NavController, public navParams: NavParams,
     public iab: InAppBrowser
     ) {
+      //this.saveText = "Save";
       this.albums = [];
       this.artistId = navParams.get('artistId');
       this._dbService.init();
   }
 
   ngOnInit(){
+
     if(!this._dbService.ifArtistExist(this.artistId)){
       console.log("new artist!");
       this._dbService.AutoRegisterArtist(this.artistId);
@@ -45,6 +48,7 @@ export class ArtistPage {
   }
 
   ionViewDidLoad() {
+    this.ifSaved();
     this._spotifyService.getToken()
       .subscribe(res => {
           console.log("this artist: "+this.artistId);
@@ -127,6 +131,27 @@ export class ArtistPage {
     name = name.replace(')','');
     name = name.trim();
     return name;
+  }
+
+  async ifSaved(){
+    let ifSaved = await this._dbService.ifSavedArtist(this.artistId);
+    if(ifSaved){
+      this.saveText = "Saved";
+      return true;
+    }else{
+      this.saveText = "Save";
+      return false;
+    }
+  }
+  async saveAction(){
+    let currentUserId = this._dbService.getCurrentUserId();
+    let ifSaved = await this._dbService.ifSavedArtist(this.artistId);
+    if(ifSaved){
+      this._dbService.unsaveArtist(currentUserId, this.artistId);
+    }else{
+      this._dbService.saveArtist(currentUserId, this.artistId);
+    }
+    this.ifSaved(); //NECESSARY!!!To update the text
   }
 
 

@@ -20,7 +20,7 @@
 	</div>
 	<h5>{{movieInfo.movie_title}}</h5>
 	<p>{{movieInfo.plot}}</p>
-	<button ion-button>Save</button>
+	<button ion-button (click)="saveAction()" [innerHTML]="saveText"></button>
 	<ion-list>
 		<button ion-item *ngFor="let song of tracks" (click)="playsong(song.preview_url)">
 			{{ song.name }}

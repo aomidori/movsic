@@ -19,7 +19,7 @@
 	</ion-thumbnail>
 	<div class="user-card center mgt30">
       <h5 >{{(artistData | async)?.name}}</h5>
-	  <button ion-button>Save</button>
+	  <button ion-button (click)="saveAction()" [innerHTML]="saveText"></button>
 	</div>
 
 	<h3>Soundtracks</h3>

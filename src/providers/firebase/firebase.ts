@@ -27,6 +27,7 @@ export class FirebaseProvider {
     private _spotifyService: SpotifyServiceProvider,
     private _omdbService: OmdbServiceProvider
   ) {
+    this.init();
   }
 
   async init(){
@@ -76,18 +77,41 @@ export class FirebaseProvider {
     return this.afDatabase.object(`user/${userId}/savedArtists`).valueChanges();
   }
   saveMovie(userId:string, spotifyId:string){
-    this.afDatabase.object(`user/${userId}/savedMovies`).update({spotifyId:true});
+    this.afDatabase.object(`user/${userId}/savedMovies`).update({[spotifyId]:true});
     //this.afDatabase.object(`movie/${imdbId}/fans`).update({[userId]: true});
   }
   unsaveMovie(userId:string, spotifyId:string){
     this.afDatabase.object(`user/${userId}/savedMovies/${spotifyId}`).remove();
   }
   saveArtist(userId: string, artistId: string){
-    this.afDatabase.object(`user/${userId}/savedArtists`).update({artistId:true});
+    this.afDatabase.object(`user/${userId}/savedArtists`).update({[artistId]:true});
     //this.afDatabase.object(`movie/${artistId}/fans`).update({[userId]: true});
   }
   unsaveArtist(userId: string, artistId: string){
     this.afDatabase.object(`user/${userId}/savedArtists/${artistId}`).remove();
+  }
+
+  async ifSavedMovie(spotifyId:string){
+    let userId = this.getCurrentUserId();
+    let result = false;
+    let res = await firebase.database().ref(`/user/${userId}/savedMovies/${spotifyId}`).once(`value`).then(snapshot =>{
+      if(!snapshot.val() || snapshot.val()===null){
+        result = false;
+      }else result = true;
+    })
+    return result;
+  }
+  async ifSavedArtist(spotifyId: string){
+    let userId = this.getCurrentUserId();
+    let result = false;
+    let res = await firebase.database().ref(`/user/${userId}/savedArtists/${spotifyId}`).once(`value`).then(snapshot =>{
+      if(!snapshot.val() || snapshot.val()===null){
+        result = false;
+      }else {
+        result = true;
+      }
+    })
+    return result;
   }
 
   /*

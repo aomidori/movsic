@@ -15,6 +15,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'movie.html',
 })
 export class MoviePage {
+  saveText: string;
   movieOST={} as MovieSoundtrack;
   movieInfo={} as MovieInfo;
   soundtrackId: string;  //!!!! Spotify album ID;
@@ -62,6 +63,7 @@ export class MoviePage {
 
 
   ionViewDidLoad(){
+    this.ifSaved();
     this._spotifyService.getToken()
       .subscribe(res => {
           //get tracks
@@ -148,6 +150,27 @@ export class MoviePage {
 
   ngOnDestroy(){
     this._dbService.updateMovieSoundtrack(this.soundtrackId, this.movieOST);
+  }
+
+  async ifSaved(){
+    let ifSaved = await this._dbService.ifSavedMovie(this.soundtrackId);
+    if(ifSaved){
+      this.saveText = "Saved";
+      return true;
+    }else{
+      this.saveText = "Save";
+      return false;
+    }
+  }
+  async saveAction(){
+      let currentUserId = this._dbService.getCurrentUserId();
+      let ifSaved = await this._dbService.ifSavedMovie(this.soundtrackId);
+      if(ifSaved){
+        this._dbService.unsaveMovie(currentUserId, this.soundtrackId);
+      }else{
+        this._dbService.saveMovie(currentUserId, this.soundtrackId);
+      }
+      this.ifSaved();
   }
 
 
