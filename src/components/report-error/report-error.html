@@ -1,17 +1,15 @@
 <!-- Generated template for the ReportErrorComponent component -->
 <div>
 	<h5 class="movsic-title">Report Form</h5>
-	<ion-card>
+	<form (ngSubmit)="logForm()">
 		<ion-item>
 			<ion-label stacked>Subject</ion-label>
-			<ion-input type="text"></ion-input>
+			<ion-input [(ngModel)]="prob.title" type="text"></ion-input>
 		</ion-item>
-		<ion-card-content>
-		  <ion-item>
+		<ion-item>
 			<ion-label stacked>Problem Description</ion-label>
-			<ion-input type="text"></ion-input>
-		  </ion-item>
-		</ion-card-content>
-	</ion-card>
-	<button ion-button round>Primary Round</button>
+			<ion-textarea [(ngModel)]="prob.description" name="description" type="text"></ion-textarea>
+		</ion-item>
+		<button ion-button round type="submit">Submit</button>
+	</form>
 </div>
