@@ -38,12 +38,14 @@ export class MoviePage {
     private iab: InAppBrowser) {
         this.movieOST = navParams.get('soundtrack');
         this.defaultComposorId = navParams.get('artistId');
-        console.log(this.movieOST);
         this.soundtrackId = this.movieOST.spotify_id;
         this.soundtrackName = this.movieOST.name;
-        if(this.movieOST.composors[0].name.trim()=="Various Artists"){
-          this.ifVariousArtists = true;
+        if(this.movieOST){
+          if(this.movieOST.composors[0].name.trim()=="Various Artists"){
+            this.ifVariousArtists = true;
+          }
         }
+
         this.movieInfo={
           imdb_id: '',
           movie_title: _omdbService.extractMovieName(this.soundtrackName),
@@ -117,7 +119,11 @@ export class MoviePage {
     this._spotifyService.getToken().subscribe(res=>{
         let defaultComposorId = '';
         if(this.defaultComposorId) defaultComposorId = this.defaultComposorId;
-        else defaultComposorId = this.tracks[0].artists[0].id;
+        else {
+          if(this.tracks){
+            defaultComposorId = this.tracks[0].artists[0].id;
+          }
+        }
         this._spotifyService.getArtist(defaultComposorId, res.access_token).subscribe(artist=>{
           let url = '';
           console.log("try to get"+ artist.name);

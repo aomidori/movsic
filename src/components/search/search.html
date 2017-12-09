@@ -7,8 +7,10 @@
 <div class="search-dropdown" *ngIf="dropdownDisplay">
   <div style="background-color:white">
         <button class="search-item" *ngFor="let album of albums" >
-          <img class="search-item__img" src="{{album.img_url}}" />
-          <span class="search-item__name">{{album.name}}</span>
+          <span (click)="goToSoundtrack(album)">
+            <img class="search-item__img" src="{{album.img_url}}" />
+            <span class="search-item__name">{{album.name}}</span>
+          </span>
             <!--pre>{{item | json}}</pre-->
         </button>
   </div>
