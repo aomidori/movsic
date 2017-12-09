@@ -24,12 +24,11 @@ export class SavedArtistsComponent {
     this.currentUserId = this._dbService.getCurrentUserId();
     this.savedArtistsData = this._dbService.getSavedArtists(this.currentUserId);
     // Will change later, this is just for my profile so use currentuser
-    this.getSavedArtists();
+    this.getSavedList();
 
   }
 
-  async getSavedArtists(){
-    console.log("now get saved");
+  async getSavedList(){
     this.savedArtists = [];
     let result = await this.savedArtistsData.subscribe(res=>{
       this.savedArtists = [];
