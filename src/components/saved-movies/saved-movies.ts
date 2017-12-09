@@ -1,21 +1,41 @@
 import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
 
-/**
- * Generated class for the SavedMoviesComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
+import { MovieSoundtrack } from '../../models/movie-soundtrack';
+import { MoviePage } from '../../pages/movie/movie';
+
 @Component({
   selector: 'saved-movies',
   templateUrl: 'saved-movies.html'
 })
 export class SavedMoviesComponent {
+  currentUserId: string;
+  savedMoviesData: Observable<{}>;
+  savedMovieSoundtracks: MovieSoundtrack[];
 
-  text: string;
+  constructor(
+    private _dbService: FirebaseProvider,
+    public nav: NavController, public navParams: NavParams,
+  ) {
+    this.currentUserId = this._dbService.getCurrentUserId();
+    this.savedMoviesData = this._dbService.getSavedMovies(this.currentUserId);
+    this.getSavedList();
+  }
 
-  constructor() {
-    console.log('Hello SavedMoviesComponent Component');
+  async getSavedList(){
+    this.savedMovieSoundtracks =[];
+    let result = await this.savedMoviesData.subscribe(res=>{
+      this.savedMovieSoundtracks = [];
+      for (let id of Object.keys(res)){
+        this._dbService.getMovieSoundtrack(id).subscribe(soundtrackInfo => {
+          this.savedMovieSoundtracks.push(soundtrackInfo);
+        })
+      }
+    })
   }
 
 }

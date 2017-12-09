@@ -1,6 +1,21 @@
-<!-- Generated template for the SavedMoviesComponent component -->
+<h5 class="movsic-title">Saved movie soundtracks</h5>
 
-<h5 class="movsic-title">Saved movies</h5>
+<div class="home-soundtrack-list">
+  <div class="movie-card" *ngFor="let soundtrack of savedMovieSoundtracks">
+    <img class="movie-card-img" (click)="goToSoundtrack(soundtrack)" src="{{soundtrack.img_url}}"/>
+    <div class="movie-card-info">
+      <p>{{soundtrack.name}}</p>
+      <small>{{soundtrack.composors[0].name}}</small>
+      <!--Too many mame it's too hard to display
+      span class="composor-names" *ngFor="let composor of soundtrack.composors">
+        <a>{{composor.name}}</a>,
+      </span-->
+    </div>
+  </div>
+</div>
+
+
+<!--h5 class="movsic-title">Saved movies</h5>
 <div style="overflow-x: auto;padding-bottom:5px;">
   <div style="width:400px;height:220px;">
 	<div class="mgt30">
@@ -34,5 +49,4 @@
 	  </ion-grid>
 	</div>
   </div>
-</div> 
-
+</div-->
