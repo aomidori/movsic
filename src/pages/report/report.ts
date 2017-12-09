@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the ReportPage page.
@@ -15,9 +15,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ReportPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+			  public navParams: NavParams,
+			  private alertCtrl: AlertController
+			  ) {
   }
-
+  
+  presentAlert() {
+    let alert = this.alertCtrl.create({
+ 	  title: 'Report Received',
+	  subTitle: 'We have got your report! Thanks for your kind help. We will look into it.',
+	  buttons: ['OK']
+	});
+	alert.present();
+  }
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReportPage');
   }

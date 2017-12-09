@@ -14,9 +14,22 @@
 
 
 <ion-content padding>
-<div>
-  <p> report page</p>
-	<!--report-error></report-error-->
-	<!-- components/report-error/report-error.html -->
+<h3 class="movsic-title">Anything missing or wrong?</h3>
+<div style="height:300px;">
+	<h2 style="color:white;"><strong>Contact Us</strong></h2>
+	<div style="height: 25px;"></div>
+	<form (ngSubmit)="presentAlert()">
+		<ion-item>
+			<ion-label stacked>Subject</ion-label>
+			<ion-input type="text"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label stacked>Problem Description</ion-label>
+			<ion-textarea rows="5" name="description" type="text"></ion-textarea>
+		</ion-item>
+		<div style="height: 25px;"></div>
+		<button class="center" block ion-button round type="submit">Submit</button>
+	</form>
 </div>
+
 </ion-content>
