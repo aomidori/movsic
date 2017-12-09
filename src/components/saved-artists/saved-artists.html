@@ -1,9 +1,27 @@
 <!-- Generated template for the SavedArtistsComponent component -->
-
+<!-- Generated template for the ArtistRecommendComponent component -->
 <h5 class="movsic-title">Saved artists</h5>
+<ion-grid>
+  <ion-row>
+    <ion-col col-4 *ngFor="let artist of (savedArtists)">
+      <div class="artist-item center">
+
+        <ion-avatar (click)="goToArtist(artist.spotify_id)">
+            <div class="circle artist-avatar center"
+            [ngStyle]="{'background-image':'url('+ artist.img_url +')'}">
+            </div>
+        </ion-avatar>
+        <p>{{artist.name}}</p>
+      </div>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>
+
+<!--h5 class="movsic-title">Saved artists</h5>
 <div style="overflow-x: auto;padding-bottom:5px;">
   <div style="width:400px;height:180px;">
-	<div class="mgt30">		
+	<div class="mgt30">
 	  <ion-grid>
 		<ion-row>
 	      <ion-col col-4>
@@ -39,5 +57,5 @@
 		</ion-row>
 	  </ion-grid>
 	</div>
-  </div> 
-</div> 
+  </div>
+</div-->

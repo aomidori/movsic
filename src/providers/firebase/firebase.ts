@@ -71,7 +71,7 @@ export class FirebaseProvider {
    */
 
   getSavedMovies(userId: string){
-    return this.afDatabase.object(`user/${userId}/savedMovies`).valueChanges()
+    return this.afDatabase.object(`user/${userId}/savedMovies`).valueChanges();
   }
   getSavedArtists(userId: string){
     return this.afDatabase.object(`user/${userId}/savedArtists`).valueChanges();
