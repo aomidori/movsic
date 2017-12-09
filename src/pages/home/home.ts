@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
+import { Keyboard } from '@ionic-native/keyboard';
 import { Http } from '@angular/http';
 //import { Observable } from 'rxjs/Observable';
 //import { SearchDropdownComponent } from '../../components/search-dropdown/search-dropdown';
@@ -16,9 +17,16 @@ export class HomePage {
   /*searchStr: string;
   token: string;
   searchRes: string;*/
-  constructor(public navCtrl: NavController, public http:Http, private _spotifyService:SpotifyServiceProvider) {
+  constructor(public navCtrl: NavController,
+              private event: Events,
+              private keyboard: Keyboard,
+              public http:Http, private _spotifyService:SpotifyServiceProvider) {
 
   }
+  // ionViewDidLoad(){
+  //   this.keyboard.onKeyboardShow().subscribe(()=>this.event.publish('hideTabs'));
+  //   this.keyboard.onKeyboardHide().subscribe(()=>this.event.publish('showTabs'));
+  // }
   /*searchMusic(){
     this._spotifyService.getToken()
          .subscribe(res => {

@@ -3,7 +3,6 @@ import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { SpotifyServiceProvider } from '../../providers/spotify-service/spotify-service';
 import { MovieSoundtrack } from '../../models/movie-soundtrack';
-
 @Component({
   selector: 'search',
   templateUrl: 'search.html',
@@ -24,7 +23,10 @@ export class SearchComponent {
     this.dropdownDisplay = false;
     this.albums = [];
   }
-
+  // ionViewDidLoad(){
+  //   this.keyboard.onKeyboardShow().subscribe(()=>this.event.publish('hideTabs'));
+  //   this.keyboard.onKeyboardHide().subscribe(()=>this.event.publish('showTabs'));
+  // }
   searchMusic(){
     this.albums = [];
     const trimmed_query = this.query.trim();

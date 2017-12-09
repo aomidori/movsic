@@ -41,6 +41,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SpotifyServiceProvider } from '../providers/spotify-service/spotify-service';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
+import { Keyboard } from '@ionic-native/keyboard';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
     SpotifyServiceProvider,
     FirebaseProvider,
     InAppBrowser,
-    OmdbServiceProvider
+    OmdbServiceProvider,
+    Keyboard
   ]
 })
 export class AppModule {}
