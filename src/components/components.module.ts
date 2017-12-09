@@ -10,6 +10,7 @@ import { CommonInterestComponent } from './common-interest/common-interest';
 import { ExploreCardsComponent } from './explore-cards/explore-cards';
 import { MessagesComponent } from './messages/messages';
 import { ExploreRecomComponent } from './explore-recom/explore-recom';
+import { ReportErrorComponent } from './report-error/report-error';
 
 @NgModule({
 	declarations: [
@@ -22,7 +23,8 @@ import { ExploreRecomComponent } from './explore-recom/explore-recom';
     CommonInterestComponent,
     ExploreCardsComponent,
     MessagesComponent,
-    ExploreRecomComponent
+    ExploreRecomComponent,
+    ReportErrorComponent
 	],
 	imports: [
     IonicModule.forRoot(ArtistRecommendComponent),
@@ -38,7 +40,8 @@ import { ExploreRecomComponent } from './explore-recom/explore-recom';
     CommonInterestComponent,
     ExploreCardsComponent,
     MessagesComponent,
-    ExploreRecomComponent
+    ExploreRecomComponent,
+    ReportErrorComponent
 	]
 })
 export class ComponentsModule {}
