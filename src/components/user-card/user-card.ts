@@ -16,6 +16,7 @@ export class UserCardComponent {
   currentUserId: string;
   userId: string;
   userData: Observable<User>;
+  profile_url: string; //img_url
   //userData: Observable<User>;
   //userData: User;
 
@@ -27,11 +28,15 @@ export class UserCardComponent {
   following:any;
 
   constructor(
+    private afAuth: AngularFireAuth,
     public nav: NavController,
     public params: NavParams,
     private dbService: FirebaseProvider)
   {
       this.dbService.init();
+      this.afAuth.authState.take(1).subscribe(auth=>{
+        this.profile_url = auth.photoURL;
+      })
   }
 
   ngOnInit(){

@@ -28,10 +28,12 @@ export class SignupPage {
       const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
       if(result){
         this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+        let url = 'https://www.gravatar.com/avatar/'+ Md5.hashStr(user.email.toLowerCase());
         this.afAuth.auth.currentUser.updateProfile({
           displayName: user.displayName,
-          photoURL: 'https://www.gravatar.com/avatar/'+ Md5.hashStr(user.email.toLowerCase())
+          photoURL: url
         });
+        this.user.photoURL = url;
         //this.nav.setRoot(TabsPage);
         this.createProfile();
         this.registerSuccessAlert();
@@ -60,6 +62,7 @@ export class SignupPage {
   createProfile(){
     this.afAuth.authState.take(1).subscribe(auth => {
       this.user.uid = auth.uid;
+      this.user.photoURL = auth.photoURL;
       this.afDatabase.object(`user/${auth.uid}`).set(this.user)
         .then(()=> this.nav.setRoot(TabsPage))
     });
