@@ -1,6 +1,9 @@
-<ion-content padding class="mgt60">
-
-  <h3 class="center">movsic</h3>
+<ion-content padding class="page-login">
+  <div style="height:60px;">
+  </div>
+  <div style="height:110px;">
+	<img class="loginLogo"  src="assets/imgs/logo.jpg"/>
+  </div>
   <ion-card-content>
   <ion-list>
 
@@ -16,12 +19,21 @@
 
   </ion-list>
 
-  <div padding>
-    <button ion-button block color="facebook" (click)="loginWithFacebook()">
-		    <ion-icon name="logo-facebook"></ion-icon> Login with Facebook
-	  </button>
-    <button ion-button color="primary" block (click)="login(user)">LOG IN</button>
-    <span>Not a member yet? <a [navPush]="signupPage">Sign up!</a></span>
+  <div padding style="text-align: center;">
+  
+    <button ion-button color="primary" block (click)="login(user)">LOG IN</button> 
+	<div style="height:30px;">
+		<p style="color=;">---------------------------- OR ----------------------------  </p>
+	</div>
+    <button ion-button  color="light" outline block  (click)="loginWithFacebook()">
+		    <ion-icon name="logo-facebook"></ion-icon>　 FACEBOOK LOG IN
+	</button>
+    <hr>
+    <span>
+		<h6 style="color:#696969;">Not a member yet? 
+			<a style="color:white;text-decoration: none;" [navPush]="signupPage">Sign up</a>
+		</h6>
+	</span>
   </div>
   </ion-card-content>
 </ion-content>

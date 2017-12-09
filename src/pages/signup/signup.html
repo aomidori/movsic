@@ -1,7 +1,11 @@
-<ion-content padding class="mgt60">
+<ion-content padding class="page-signup">
 
-  <h3 class="center">movsic</h3>
-
+  <div style="height:60px;">
+  </div>
+  <div style="height:110px;">
+	<img class="loginLogo"  src="assets/imgs/logo.jpg"/>
+  </div>
+  <ion-card-content>
   <ion-list>
 
     <ion-item>
@@ -24,7 +28,13 @@
 
   <div padding>
     <button ion-button color="primary" block (click) = "register(user)">SIGN UP</button>
-    <span>Already a member? <a [navPush]="loginPage">Log in</a></span>
+    <hr>
+	<span>
+		<h6 style="color:#696969;">Already a member? 
+			<a style="color:white;text-decoration: none;" [navPush]="loginPage">Log in</a>
+		</h6>
+	</span>
   </div>
-
+  
+</ion-card-content>
 </ion-content>
