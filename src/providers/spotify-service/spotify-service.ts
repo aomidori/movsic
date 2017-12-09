@@ -80,7 +80,6 @@ export class SpotifyServiceProvider {
     this.ArtistUrl = 'https://api.spotify.com/v1/artists/'+ id;
     return this._http.get(this.ArtistUrl, {headers: headers})
       .map((res:Response) => res.json())
-
   }
   getArtistAlbums(id:string, token:string){
     let headers = new Headers({'Authorization':'Bearer '+token});

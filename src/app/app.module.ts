@@ -7,7 +7,6 @@ import { FIREBASE_CONFIG} from './app.firebase.config'
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule} from 'angularfire2/auth';
-
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
@@ -40,6 +39,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SpotifyServiceProvider } from '../providers/spotify-service/spotify-service';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
+import { MediaCapture } from '@ionic-native/media-capture';
+import { AcrServiceProvider } from '../providers/acr-service/acr-service';
+import { File } from "@ionic-native/file";
+
 
 @NgModule({
   declarations: [
@@ -79,7 +82,10 @@ import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
     SpotifyServiceProvider,
     FirebaseProvider,
     InAppBrowser,
-    OmdbServiceProvider
+    OmdbServiceProvider,
+    MediaCapture,
+    AcrServiceProvider,
+    File
   ]
 })
 export class AppModule {}
