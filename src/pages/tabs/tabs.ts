@@ -7,14 +7,13 @@ import { MessagePage } from '../message/message';
 import { MyprofilePage} from '../myprofile/myprofile';
 
 import { AngularFireAuth} from 'angularfire2/auth';
-import { Keyboard } from "@ionic-native/keyboard";
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  @ViewChild('myTabs') tabRef: Tabs;
-  mb: any;
+  // @ViewChild('myTabs') tabRef: Tabs;
+  // mb: any;
   tab1Root = HomePage;
   tab2Root = ExplorePage;
   tab3Root = MessagePage;
@@ -31,14 +30,14 @@ export class TabsPage {
     private renderer: Renderer,
     private event: Events,
     public alertCtrl: AlertController,
-    public keyboard : Keyboard,
+    // public keyboard : Keyboard,
     ) {
 
   }
-  ionViewDidEnter(){
-    this.keyboard.onKeyboardShow().subscribe(()=>this.valueforngif=false);
-    this.keyboard.onKeyboardHide().subscribe(()=>this.valueforngif=true);
-  }
+  // ionViewDidEnter(){
+  //   this.keyboard.onKeyboardShow().subscribe(()=>this.valueforngif=false);
+  //   this.keyboard.onKeyboardHide().subscribe(()=>this.valueforngif=true);
+  // }
   // queryElement(elem:HTMLElement,q:string):HTMLElement{
   //   return <HTMLElement>elem.querySelector(q);
   // }
