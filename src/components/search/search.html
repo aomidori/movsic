@@ -2,10 +2,20 @@
 <ion-searchbar [(ngModel)]="query"
                 (keyup)="searchMusic()"
                 [showCancelButton]="shouldShowCancel"
+                (ionFocus) = "checkFocus()"
+                (ionBlur) = "checkBlur()"
                 animated="true"></ion-searchbar>
 
 <div class="search-dropdown" *ngIf="dropdownDisplay">
-  <div style="background-color:white">
+  <div style="background-color:white; padding-botton: 15px;">
+    <div class="center song-recog">
+      <button class="song-recog-btn" (click)="goToRecognition()" >
+        <ion-icon name="ios-mic" class="song-recog-ico"></ion-icon>
+        <!--img  src="assets/imgs/song-recg-ico.png"-->
+        Song Recognition
+      </button>
+    </div>
+
         <button class="search-item" *ngFor="let album of albums" >
           <span (click)="goToSoundtrack(album)">
             <img class="search-item__img" src="{{album.img_url}}" />
