@@ -1,5 +1,5 @@
-<h5 class="movsic-title">Saved Movie Soundtracks</h5>
 
+<h5 class="movsic-title">Saved Movie Soundtracks({{num}})</h5><!--//({{num}})-->
 <div class="home-soundtrack-list profile-soundtrack-list">
   <div class="movie-card" *ngFor="let soundtrack of savedMovieSoundtracks">
     <img class="movie-card-img" (click)="goToSoundtrack(soundtrack)" src="{{soundtrack.img_url}}"/>
