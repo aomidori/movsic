@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>recognition</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <span *ngIf="!ifResult">
+    <div class = "recg-circle-wrapper center" (click)="stopRecg()" *ngIf="recognizing">
+      <div id="music-loader" >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+      </div>
+    </div>
+    <div class = "recg-circle-wrapper center" (click)="startRecg()" *ngIf="!recognizing">
+      <ion-icon class="note-ico" name="ios-musical-note"></ion-icon>
+    </div>
+
+    <p class="recg-action-text">{{actionText}}</p>
+  </span>
+
+  <div class="recg-result" *ngIf="ifResult">
+    <img src="assets/imgs/cover3.jpg">
+    <p class="result-title">Imagining Buffalo</p>
+    <span class="result-info">
+      <p>From: The Revenant</p>
+      <p>Composer: Ryuichi Sakamoto</p>
+    </span>
+  </div>
+
+</ion-content>

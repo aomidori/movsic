@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { SpotifyServiceProvider } from '../../providers/spotify-service/spotify-service';
@@ -6,7 +6,7 @@ import { MovieSoundtrack } from '../../models/movie-soundtrack';
 
 import { ArtistPage } from '../../pages/artist/artist';
 import { MoviePage } from '../../pages/movie/movie';
-
+import { RecognitionPage } from '../../pages/recognition/recognition';
 @Component({
   selector: 'search',
   templateUrl: 'search.html',
@@ -30,6 +30,7 @@ export class SearchComponent {
   }
 
   searchMusic(){
+    this.dropdownDisplay = false;
     this.albums = [];
     const trimmed_query = this.query.trim();
     if(!trimmed_query || trimmed_query.length ==0 ){
@@ -66,6 +67,13 @@ export class SearchComponent {
     console.log(this.albums);
   }
 
+  checkFocus(){
+    this.dropdownDisplay = true;
+  }
+  checkBlur(){
+     //this.dropdownDisplay = false;
+  }
+
 
   ifSoundtrack(name: string){
     name = name.toLowerCase();
@@ -96,6 +104,9 @@ export class SearchComponent {
         })
       })
 
+  }
+  goToRecognition(){
+      this.nav.push(RecognitionPage);
   }
 
 

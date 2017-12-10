@@ -34,6 +34,7 @@ import { MyprofilePage } from '../pages/myprofile/myprofile';
 import { TabsPage } from '../pages/tabs/tabs';
 import { MoviePage } from '../pages/movie/movie';
 import { ArtistPage} from '../pages/artist/artist';
+import { RecognitionPage } from '../pages/recognition/recognition';
 import { RecomPage } from '../pages/recom/recom';
 import { ReportPage } from '../pages/report/report';
 
@@ -53,7 +54,8 @@ import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
     TabsPage,
     MoviePage, ArtistPage,
 	  RecomPage,
-    ReportPage
+    ReportPage,
+    RecognitionPage
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -76,7 +78,8 @@ import { OmdbServiceProvider } from '../providers/omdb-service/omdb-service';
     TabsPage,
     MoviePage, ArtistPage,
 	  RecomPage,
-    ReportPage
+    ReportPage,
+    RecognitionPage
   ],
   providers: [
     StatusBar,

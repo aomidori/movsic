@@ -45,3 +45,31 @@ search {
   }
 
 }
+
+.song-recog-btn{
+
+}
+
+.song-recog-ico{
+  font-size: 1.3em;
+  vertical-align: middle;
+  padding: 0 20px 2px 0px;
+  //margin: 5px 10px 5px 20px;
+}
+.song-recog-btn{
+  width: 90%;
+  background-color:#F1ECF2;
+  border: none;
+  color: #555555;
+  margin-left: auto;
+  margin-right: auto;
+  padding:10px 20px 10px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+.song-recog-btn:hover{
+  background-color: #E51D91;
+  color: white;
+
+}
