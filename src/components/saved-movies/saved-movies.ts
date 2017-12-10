@@ -16,7 +16,7 @@ export class SavedMoviesComponent {
   currentUserId: string;
   savedMoviesData: Observable<{}>;
   savedMovieSoundtracks: MovieSoundtrack[];
-  num : int;
+  num: number;
   constructor(
     private _dbService: FirebaseProvider,
     public nav: NavController, public navParams: NavParams,

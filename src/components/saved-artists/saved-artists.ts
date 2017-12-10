@@ -16,7 +16,7 @@ export class SavedArtistsComponent {
   currentUserId: string;
   savedArtistsData: Observable<{}>;
   savedArtists: Artist[];
-  num: int;
+  num: number;
 
   constructor(
     private _dbService: FirebaseProvider,
