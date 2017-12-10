@@ -44,5 +44,7 @@ export class SavedMoviesComponent {
       }
     })
   }
-
+  public goToSoundtrack(ost: MovieSoundtrack){
+    this.nav.push(MoviePage, {soundtrack: ost});
+  }
 }
