@@ -16,14 +16,13 @@ export class SavedMoviesComponent {
   currentUserId: string;
   savedMoviesData: Observable<{}>;
   savedMovieSoundtracks: MovieSoundtrack[];
-
+  num : int;
   constructor(
     private _dbService: FirebaseProvider,
     public nav: NavController, public navParams: NavParams,
   ) {
     this.currentUserId = this._dbService.getCurrentUserId();
     this.savedMoviesData = this._dbService.getSavedMovies(this.currentUserId);
-
   }
 
   ngOnInit(){
@@ -32,6 +31,7 @@ export class SavedMoviesComponent {
   }
 
   async getSavedList(){
+	this.num = 0;
     this.savedMovieSoundtracks =[];
     let result = await this.savedMoviesData.subscribe(res=>{
       this.savedMovieSoundtracks = [];
@@ -39,7 +39,9 @@ export class SavedMoviesComponent {
         for (let id of Object.keys(res)){
           this._dbService.getMovieSoundtrack(id).subscribe(soundtrackInfo => {
             this.savedMovieSoundtracks.push(soundtrackInfo);
+			this.num = this.num+1;
           })
+		this.num = this.savedMovieSoundtracks.length;
         }
       }
     })

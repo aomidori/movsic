@@ -16,6 +16,7 @@ export class SavedArtistsComponent {
   currentUserId: string;
   savedArtistsData: Observable<{}>;
   savedArtists: Artist[];
+  num: int;
 
   constructor(
     private _dbService: FirebaseProvider,
@@ -33,6 +34,7 @@ export class SavedArtistsComponent {
   }
 
   async getSavedList(){
+	this.num = 0;
     this.savedArtists = [];
     let result = await this.savedArtistsData.subscribe(res=>{
       this.savedArtists = [];
@@ -40,8 +42,10 @@ export class SavedArtistsComponent {
         for (let id of Object.keys(res)){
           this._dbService.getArtist(id).subscribe(artistInfo =>{
             this.savedArtists.push(artistInfo);
+			this.num = this.num+1;
           })
         }
+		this.num = this.savedArtists.length;
       }
     })
   }
@@ -49,8 +53,5 @@ export class SavedArtistsComponent {
   public goToArtist(id: string){
     this.nav.push(ArtistPage, {artistId: id});
   }
-
-
-
 
 }
