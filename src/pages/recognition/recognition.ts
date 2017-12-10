@@ -41,7 +41,6 @@ export class RecognitionPage {
   }
 
   goToMovie(){
-    console.log("why dont' go");
     var ost = {
       spotify_id:  '5lyNebNgp8ZEhDwC2qOIWr',
       img_url:  'https://i.scdn.co/image/018f50eeef1f388a2701a3dc36c0f22bfab670d5',
