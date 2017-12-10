@@ -15,17 +15,27 @@
 		<div *ngFor = "let composor of movieOST.composors" class="composor-item" (click)="goToArtist(composor.spotify_id)">
 			<div class="circle artist-avatar-small center"
 						[ngStyle]="{'background-image': 'url('+composor.img_url+')'}">
-			</div>
+      </div>
 			<p>{{composor.name}}</p>
-		</div>
+    </div>
 	</div>
+
+  <button class="save-movie-btn" ion-button (click)="saveAction()" [innerHTML]="saveText"></button>
+
 	<h5>{{movieInfo.movie_title}}</h5>
 	<p>{{movieInfo.plot}}</p>
-	<button ion-button (click)="saveAction()" [innerHTML]="saveText"></button>
-	<ion-list>
-		<button ion-item *ngFor="let song of tracks" (click)="playsong(song.preview_url)">
-			{{ song.name }}
-		</button>
+
+	<ion-list class = "tracks-wrapper">
+    <ion-item ion-item *ngFor="let song of tracks">
+  		<button (click)="playsong(song.preview_url)" class="song-btn">
+        {{ song.name }}
+      </button>
+      <span style="float: right;" class="track-icons">
+        <ion-icon name="heart-outline" color="primary" class="heart-ico" *ngIf="!likes[song.track_number]" (click)="likeSong(song.track_number)"></ion-icon>
+        <ion-icon name="heart" color="primary" class="heart-ico" *ngIf="likes[song.track_number]" (click)="likeSong(song.track_number)"></ion-icon>
+        <ion-icon name="ios-arrow-down" color="light" class="down-ico"></ion-icon>
+      </span>
+		</ion-item>
 	</ion-list>
 
 </ion-content>

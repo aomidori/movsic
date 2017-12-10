@@ -27,6 +27,7 @@ export class MoviePage {
   //year: number;
   searchRes: string;
   tracks: any;
+  likes: any;
   defaultComposorId: string;
   ifVariousArtists: boolean;
 
@@ -37,6 +38,7 @@ export class MoviePage {
     private _omdbService: OmdbServiceProvider,
     private _dbService: FirebaseProvider,
     private iab: InAppBrowser) {
+        this.likes = [];
         this.movieOST = navParams.get('soundtrack');
         this.defaultComposorId = navParams.get('artistId');
         this.soundtrackId = this.movieOST.spotify_id;
@@ -73,6 +75,9 @@ export class MoviePage {
             this._spotifyService.getAlbumTracks(this.soundtrackId , res.access_token)
               .subscribe(res=> {
                     this.tracks = res.items;
+                    for(let i = 0; i< res.items.length; i++){
+                      this.likes.push(false);
+                    }
             });
           //get composor composorAvatars
           if(!this.ifVariousArtists){
@@ -182,6 +187,11 @@ export class MoviePage {
 
   goToReport(){
     this.nav.push(ReportPage);
+  }
+
+  likeSong(trackNo: number){
+    if(this.likes[trackNo]) this.likes[trackNo] = false;
+    else this.likes[trackNo] = true;
   }
 
 

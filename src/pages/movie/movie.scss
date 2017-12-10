@@ -1,22 +1,26 @@
 page-movie {
+  .save-movie-btn{
+    margin-left: 10px;
+  }
   .composor-list{
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
     height: 100px;
-    width: 98%;
+    width: 100%;
 
     display: flex;
-    overflow-x: auto;
+    overflow-x: scroll;
+
   }
   .composor-item{
     display: inline-block;
     height: 80px;
-    width: 100px;
+    width: 80px;
     p{
       text-align: center;
       height: 40px;
-      width: 100px;
+      width: 80px;
       font-size:0.6em;
     }
   }
@@ -24,5 +28,29 @@ page-movie {
     height: 40px;
     width: 40px;
     background-size: cover;
+  }
+  .tracks-wrapper{
+    padding-top: 40px;
+    *{
+      background: black;
+    }
+    button{
+      color:white;
+      font-size: 0.9em;
+    }
+  }
+  .song-btn{
+    width: 85%;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow-x: auto;
+  }
+  .track-icons{
+    ion-icon{
+      font-size: 1.2em;
+    }
+    .heart-ico{
+      padding-right: 6px;
+    }
   }
 }
