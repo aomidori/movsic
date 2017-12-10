@@ -10,6 +10,7 @@ import { MovieInfo } from '../../models/movie-info';
 import { ReportPage } from '../report/report';
 import { Observable } from 'rxjs/Observable';
 
+import { trackInfo } from '../../temporary/track-info';
 @IonicPage()
 @Component({
   selector: 'page-movie',
@@ -28,8 +29,10 @@ export class MoviePage {
   searchRes: string;
   tracks: any;
   likes: any;
+  infos:any;
   defaultComposorId: string;
   ifVariousArtists: boolean;
+  showInfo:boolean[];
 
   constructor(
     public nav: NavController,
@@ -39,6 +42,13 @@ export class MoviePage {
     private _dbService: FirebaseProvider,
     private iab: InAppBrowser) {
         this.likes = [];
+        this.showInfo = [];
+        for (let i=0; i< 40; i++){
+          this.showInfo.push(false);
+          this.likes.push(false);
+        }
+        this.infos = trackInfo;
+        console.log(this.infos);
         this.movieOST = navParams.get('soundtrack');
         this.defaultComposorId = navParams.get('artistId');
         this.soundtrackId = this.movieOST.spotify_id;
@@ -59,6 +69,8 @@ export class MoviePage {
   }
 
   ngOnInit(){
+    this.infos = trackInfo;
+    //console.log(this.infos);
     if(!this._dbService.ifMovieSoundtrackExist(this.soundtrackId)){
       console.log("new soundtrack!");
       this._dbService.registerMovieSoundtrack(this.soundtrackId, this.movieOST);
@@ -75,9 +87,10 @@ export class MoviePage {
             this._spotifyService.getAlbumTracks(this.soundtrackId , res.access_token)
               .subscribe(res=> {
                     this.tracks = res.items;
-                    for(let i = 0; i< res.items.length; i++){
+                    /*for(let i = 0; i< res.items.length; i++){
                       this.likes.push(false);
-                    }
+                      this.showInfo.push(false);
+                    }*/
             });
           //get composor composorAvatars
           if(!this.ifVariousArtists){
@@ -192,6 +205,14 @@ export class MoviePage {
   likeSong(trackNo: number){
     if(this.likes[trackNo]) this.likes[trackNo] = false;
     else this.likes[trackNo] = true;
+  }
+  infoDropdown(trackNo: number){
+    if(this.showInfo[trackNo]){
+      this.showInfo[trackNo] = false;
+    }
+    else{
+      this.showInfo[trackNo] = true;
+    }
   }
 
 

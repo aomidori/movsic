@@ -31,10 +31,15 @@
         {{ song.name }}
       </button>
       <span style="float: right;" class="track-icons">
-        <ion-icon name="heart-outline" color="primary" class="heart-ico" *ngIf="!likes[song.track_number]" (click)="likeSong(song.track_number)"></ion-icon>
-        <ion-icon name="heart" color="primary" class="heart-ico" *ngIf="likes[song.track_number]" (click)="likeSong(song.track_number)"></ion-icon>
-        <ion-icon name="ios-arrow-down" color="light" class="down-ico"></ion-icon>
+        <ion-icon name="heart-outline" color="primary" class="heart-ico" *ngIf="!likes[song.track_number-1]" (click)="likeSong(song.track_number-1)"></ion-icon>
+        <ion-icon name="heart" color="primary" class="heart-ico" *ngIf="likes[song.track_number-1]" (click)="likeSong(song.track_number-1)"></ion-icon>
+        <ion-icon name="ios-arrow-down" color="light" class="down-ico" (click)="infoDropdown(song.track_number-1)"></ion-icon>
       </span>
+			<div class="track-info" *ngIf="showInfo[song.track_number-1]">
+        <p class="appear-at">{{infos[song.track_number-1].appearAt}} </p>
+        <p class="scene">{{infos[song.track_number-1].scene}}</p>
+        <span (click)="goToReport()"><ion-icon name="ios-alert-outline" class="track-info-report" ></ion-icon></span>
+			</div>
 		</ion-item>
 	</ion-list>
 
