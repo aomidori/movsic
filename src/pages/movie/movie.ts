@@ -43,7 +43,7 @@ export class MoviePage {
     private iab: InAppBrowser) {
         this.likes = [];
         this.showInfo = [];
-        for (let i=0; i< 40; i++){
+        for (var i=0; i< 40; i++){
           this.showInfo.push(false);
           this.likes.push(false);
         }
