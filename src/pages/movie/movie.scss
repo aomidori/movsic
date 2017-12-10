@@ -1,3 +1,67 @@
+
+.card-background-page {
+  ion-card {
+    position: relative;
+    width:100%;
+    min-height: 200px;
+  }
+  .back{
+    position: absolute;
+    top: 5%;
+    left:5%;
+  }
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+    left:5%;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 50%;
+    color: #fff;
+    left:5%;
+  }
+  .like{
+    position: absolute;
+    top: 50%;
+    left:90%;
+
+  }
+
+}
+
+.funfact {
+  ion-card {
+    position: relative;
+    width:100%;
+    min-height: 150px;
+  }
+  //.card-title {
+  //  position: absolute;
+  //  top: 36%;
+  //  font-size: 2.0em;
+  //  width: 100%;
+  //  font-weight: bold;
+  //  color: #fff;
+  //}
+  .card-subtitle {
+    font-size: 3.5em;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+}
+
+
 page-movie {
   .composor-list{
     margin-top: 40px;
@@ -26,3 +90,4 @@ page-movie {
     background-size: cover;
   }
 }
+

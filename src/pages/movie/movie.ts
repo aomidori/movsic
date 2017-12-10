@@ -55,7 +55,6 @@ export class MoviePage {
           plot: ''
         } //Default if no result;
   }
-
   ngOnInit(){
     if(!this._dbService.ifMovieSoundtrackExist(this.soundtrackId)){
       console.log("new soundtrack!");
@@ -114,7 +113,27 @@ export class MoviePage {
       })
 
   }
+  visible = false;
+  a1 = false;
+  h1 = false;
+  tabchoose = true;
+  toggle() {
+    this.visible = !this.visible;
+  }
+  toggle1(){
+    this.a1 = !this.a1;
+  }
+  toggle2(){
+    this.h1 = !this.h1;
+  }
+  toggle3(f:boolean){
+    if(f){
+      this.tabchoose = true;
+    }else{
+      this.tabchoose = false;
+    }
 
+  }
   variousArtistsHandler(){
     const composors = this.movieOST.composors;
     this._spotifyService.getToken().subscribe(res=>{

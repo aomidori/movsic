@@ -27,8 +27,8 @@ export class SearchComponent {
   ) {
     this.dropdownDisplay = false;
     this.albums = [];
-  }
 
+  }
   searchMusic(){
     this.dropdownDisplay = false;
     this.albums = [];
@@ -100,7 +100,11 @@ export class SearchComponent {
                spotify_id: composer.id
              })
            }
-           this.nav.push(MoviePage, {soundtrack: ost});
+           if (ost.spotify_id == '5lyNebNgp8ZEhDwC2qOIWr'){
+             this.nav.push(MoviePage, {soundtrack: ost});
+           }else{
+             this.nav.push(MoviePage, {soundtrack: ost});
+           }
         })
       })
 

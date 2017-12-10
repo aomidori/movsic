@@ -11,6 +11,8 @@ import { ExploreCardsComponent } from './explore-cards/explore-cards';
 import { MessagesComponent } from './messages/messages';
 import { ExploreRecomComponent } from './explore-recom/explore-recom';
 import { ReportErrorComponent } from './report-error/report-error';
+import { MovieTrackComponent } from './movie-track/movie-track';
+import { MovieCommentComponent } from './movie-comment/movie-comment';
 
 @NgModule({
 	declarations: [
@@ -24,7 +26,9 @@ import { ReportErrorComponent } from './report-error/report-error';
     ExploreCardsComponent,
     MessagesComponent,
     ExploreRecomComponent,
-    ReportErrorComponent
+    ReportErrorComponent,
+    MovieTrackComponent,
+    MovieCommentComponent
 	],
 	imports: [
     IonicModule.forRoot(ArtistRecommendComponent),
@@ -41,7 +45,9 @@ import { ReportErrorComponent } from './report-error/report-error';
     ExploreCardsComponent,
     MessagesComponent,
     ExploreRecomComponent,
-    ReportErrorComponent
+    ReportErrorComponent,
+    MovieTrackComponent,
+    MovieCommentComponent
 	]
 })
 export class ComponentsModule {}

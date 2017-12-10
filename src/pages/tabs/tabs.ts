@@ -5,7 +5,6 @@ import { HomePage } from '../home/home';
 import { ExplorePage} from '../explore/explore';
 import { MessagePage } from '../message/message';
 import { MyprofilePage} from '../myprofile/myprofile';
-
 import { AngularFireAuth} from 'angularfire2/auth';
 
 

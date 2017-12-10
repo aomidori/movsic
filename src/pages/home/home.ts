@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
 //import { Observable } from 'rxjs/Observable';
@@ -19,6 +18,10 @@ export class HomePage {
   constructor(public navCtrl: NavController, public http:Http, private _spotifyService:SpotifyServiceProvider) {
 
   }
+  // change(name:string){
+  //   let elm = <HTMLElement>document.querySelector(name);
+  //   elm.name = 'heart';
+  // }
   /*searchMusic(){
     this._spotifyService.getToken()
          .subscribe(res => {
@@ -29,5 +32,4 @@ export class HomePage {
          })
          console.log(this.searchRes);
   }*/
-
 }

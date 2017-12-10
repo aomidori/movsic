@@ -7,7 +7,6 @@
   </div>
   <ion-card-content>
   <ion-list>
-
     <ion-item>
       <ion-label floating>Email</ion-label>
       <ion-input type="email" [(ngModel)]="user.email"></ion-input>
@@ -30,11 +29,11 @@
     <button ion-button color="primary" block (click) = "register(user)">SIGN UP</button>
     <hr>
 	<span>
-		<h6 style="color:#696969;">Already a member? 
+		<h6 style="color:#696969;">Already a member?
 			<a style="color:white;text-decoration: none;" [navPush]="loginPage">Log in</a>
 		</h6>
 	</span>
   </div>
-  
+
 </ion-card-content>
 </ion-content>

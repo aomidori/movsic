@@ -1,31 +1,260 @@
-<ion-header>
-	<ion-navbar>
-		<ion-title>{{movieInfo.movie_title}}</ion-title>
-	</ion-navbar>
-	<div class="more-button" (click)="goToReport()"><ion-icon name="more"></ion-icon></div>
-</ion-header>
-
 
 <ion-content padding>
-	<ion-thumbnail class="center" style="width:140px;">
-      <img src="{{movieInfo.poster_url}}">
-	</ion-thumbnail>
+  <div class="card-background-page">
+    <ion-card>
+      <img src="assets/imgs/movie_revenant.jpg"/>
+      <ion-icon class="back" name="arrow-back" style="zoom:2.0;"  color="light"></ion-icon>
+      <div class="card-title">The Revenant</div>
+      <div class="card-subtitle">
+        Ryuichi Sakamoto,Alva Noto
+        Bryce Dessner
+      </div>
+      <ion-icon (click)="toggle()" class="like"
+                style="zoom:2.0;"  color="primary"
+                [name]="visible ? 'heart':'heart-outline'">
+      </ion-icon>
+    </ion-card>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button full color="white" (click)="toggle3(true)">CONTENT</button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button full color="white" (click)="toggle3(false)">COMMENT</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="track" *ngIf="tabchoose">
+    <h3 style="text-align: center">Fun Fact</h3>
+    <div class="funfact">
+      <ion-card>
+        <img src="assets/imgs/academic_award.png"/>
+        <div class="card-subtitle">
+          This is the movie where Leonardo won his first Academy Award.
+        </div>
+      </ion-card>
+    </div>
+    <ion-list>
+      <ion-item>
+        <ion-row>
+          <ion-col col-8>
+            <h5>The Revenant Main Theme</h5>
+            <p>Ryuichi Sakamoto</p>
+          </ion-col>
+          <ion-col col-2></ion-col>
+          <ion-col col-1>
+            <ion-icon color="primary" (click)="toggle2()" [name]="h1 ? 'heart':'heart-outline'"></ion-icon>
+          </ion-col>
+          <ion-col col-1>
+            <ion-icon (click)="toggle1()" [name]="a1 ? 'arrow-up':'arrow-down'" color="light"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-row *ngIf="a1">
+        <p>Add time when this song appear</p>
+        <ion-row>
+          <ion-col col-3>
+            <ion-input style="border: 1px solid darkgray;height:25px;" type="number" [attr.maxlength]="2"></ion-input>
+          </ion-col>
+          <ion-col col-1>
+            <strong>:</strong>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input style="border: 1px solid darkgray;height:25px;" type="number" [attr.maxlength]="2"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-input placeholder="Add a scene description"></ion-input>
+        </ion-row>
+      </ion-row>
+      <ion-item>
+        <ion-row>
+          <ion-col col-8>
+            <h5>Hawk Punished</h5>
+            <p>Alva Noto& Dessner</p>
+          </ion-col>
+          <ion-col col-2></ion-col>
+          <ion-col col-1>
+            <ion-icon  name="heart-outline" color="primary"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="arrow-down" color="light"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-col col-8>
+            <h5>Carring Glass</h5>
+            <p>Ryuichi Sakamoto&Alva Noto</p>
+          </ion-col>
+          <ion-col col-2></ion-col>
+          <ion-col col-1>
+            <ion-icon  name="heart-outline" color="primary"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="arrow-down" color="light"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-col col-8>
+            <h5>First Dream</h5>
+            <p>Ryuichi Sakamoto&Alva Noto</p>
+          </ion-col>
+          <ion-col col-2></ion-col>
+          <ion-col col-1>
+            <ion-icon  name = 'heart-outline' color="primary"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="arrow-down" color="light"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-col col-8>
+            <h5>Killing Hawk</h5>
+            <p>Ryuichi Sakamoto&Alva Noto</p>
+          </ion-col>
+          <ion-col col-2></ion-col>
+          <ion-col col-1>
+            <ion-icon  name="heart-outline" color="primary"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="arrow-down" color="light"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="comments" *ngIf="!tabchoose">
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/imgs/comment1.jpg">
+        </ion-avatar>
+        <p>Tony</p>
+        <p>November 17, 2017</p>
+      </ion-item>
+      <ion-card-content>
+        <p style="color:#fff;">
+          It is super amazing and exciting to listening itttttttttttttttt!
+        </p>
+        <div style="float: right;">
+          <ion-icon name="clipboard" color="light"></ion-icon>
+          <ion-icon name="heart" color="primary" style="margin-left:5px;">22</ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/imgs/comment2.jpg">
+        </ion-avatar>
+        <p>Jimmy</p>
+        <p>November 22, 2017</p>
+      </ion-item>
+      <ion-card-content>
+        <p style="color:#fff;">
+          Enjoy to see so many people like it.
+        </p>
+        <div style="float: right;">
+          <ion-icon name="clipboard" color="light"></ion-icon>
+          <ion-icon name="heart" color="primary" style="margin-left:5px;">12</ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/imgs/comment3.jpg">
+        </ion-avatar>
+        <p>Lucy</p>
+        <p>November 25, 2017</p>
+      </ion-item>
+      <ion-card-content>
+        <p style="color:#fff;">
+          Also excited to see Lee's success in this movie
+        </p>
+        <div style="float: right;">
+          <ion-icon name="clipboard" color="light"></ion-icon>
+          <ion-icon name="heart" color="primary" style="margin-left:5px;">8</ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/imgs/comment4.jpg">
+        </ion-avatar>
+        <p>Justin</p>
+        <p>November 15, 2017</p>
+      </ion-item>
+      <ion-card-content>
+        <p style="color:#fff;">
+          Purely talent
+        </p>
+        <div style="float: right;">
+          <ion-icon name="clipboard" color="light"></ion-icon>
+          <ion-icon name="heart" color="primary" style="margin-left:5px;">3</ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
 
-	<div class="row composor-list" >
-		<div *ngFor = "let composor of movieOST.composors" class="composor-item" (click)="goToArtist(composor.spotify_id)">
-			<div class="circle artist-avatar-small center"
-						[ngStyle]="{'background-image': 'url('+composor.img_url+')'}">
-			</div>
-			<p>{{composor.name}}</p>
-		</div>
-	</div>
-	<h5>{{movieInfo.movie_title}}</h5>
-	<p>{{movieInfo.plot}}</p>
-	<button ion-button (click)="saveAction()" [innerHTML]="saveText"></button>
-	<ion-list>
-		<button ion-item *ngFor="let song of tracks" (click)="playsong(song.preview_url)">
-			{{ song.name }}
-		</button>
-	</ion-list>
+  </div>
 
+  <h4 style="text-align: center;color:white;">Available on</h4>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+        <img width="100px" height="35px" src="assets/imgs/youtube.png"/>
+      </ion-col>
+      <ion-col col-4>
+        <img width="100px" height="35px" src="assets/imgs/spotify.png"/>
+      </ion-col>
+      <ion-col col-4>
+        <img width="100px" height="35px" src="assets/imgs/amazon.png"/>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+
+
+<!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+
+<!--<ion-header>-->
+	<!--<ion-navbar>-->
+		<!--<ion-title>{{movieInfo.movie_title}}</ion-title>-->
+	<!--</ion-navbar>-->
+	<!--<div class="more-button" (click)="goToReport()"><ion-icon name="more"></ion-icon></div>-->
+<!--</ion-header>-->
+
+
+<!--<ion-content padding>-->
+	<!--<ion-thumbnail class="center" style="width:140px;">-->
+      <!--<img src="{{movieInfo.poster_url}}">-->
+	<!--</ion-thumbnail>-->
+
+	<!--<div class="row composor-list" >-->
+		<!--<div *ngFor = "let composor of movieOST.composors" class="composor-item" (click)="goToArtist(composor.spotify_id)">-->
+			<!--<div class="circle artist-avatar-small center"-->
+						<!--[ngStyle]="{'background-image': 'url('+composor.img_url+')'}">-->
+			<!--</div>-->
+			<!--<p>{{composor.name}}</p>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--<h5>{{movieInfo.movie_title}}</h5>-->
+	<!--<p>{{movieInfo.plot}}</p>-->
+	<!--<button ion-button (click)="saveAction()" [innerHTML]="saveText"></button>-->
+	<!--<ion-list>-->
+		<!--<button ion-item *ngFor="let song of tracks" (click)="playsong(song.preview_url)">-->
+			<!--{{ song.name }}-->
+		<!--</button>-->
+	<!--</ion-list>-->
+
+<!--</ion-content>-->
+
